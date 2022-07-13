@@ -1,24 +1,28 @@
+
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import GuestForm from './GuestForm'
 
+import GuestForm from './GuestForm'
+import Navbar from './Navbar'
+import GuestList from './pages/GuestList'
 import SeatingPlan from './SeatingPlan'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
-  // const fruits = useSelector((state) => state.fruits)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchFruits())
-  // }, [])
 
   return (
     <>
       <div className="app">
-        <h1>You are invited to the wedding!</h1>
-        <SeatingPlan />
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/guestlist" element={<GuestList />} />
+            <Route path="/" element={<GuestForm />} />
+            <Route path="/seatingplan" element={<SeatingPlan />} />
+          </Routes>
+        </Router>
 
-        <GuestForm />
       </div>
     </>
   )
