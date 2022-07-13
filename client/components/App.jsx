@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchFruits } from '../actions'
 
+import SeatingPlan from './SeatingPlan'
+
 function App() {
   const fruits = useSelector((state) => state.fruits)
   const dispatch = useDispatch()
@@ -14,6 +16,7 @@ function App() {
     <>
       <div className="app">
         <h1>You are invited to the wedding!</h1>
+        <SeatingPlan />
         <ul>
           {fruits.map((fruit) => (
             <li key={fruit}>{fruit}</li>
