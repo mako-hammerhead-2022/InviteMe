@@ -42,3 +42,27 @@ test('dispatches fetchFruits action', () => {
   )
   expect(fetchFruits).toHaveBeenCalled()
 })
+
+// import { render, screen} from '@testing-library/react';
+// import {BrowserRouter, Router} from 'react-router-dom';
+// import userEvent from "@testing-library/user-event";
+// import {createMemoryHistory} from 'history';
+// import App from './App';
+
+// test('should redirect and update history', () => {
+//     const history = createMemoryHistory();
+
+//     render(<Router history={history}><App/></Router>);
+
+//     userEvent.click(screen.getByText(/Guest List/));
+
+//     expect(history.location.pathname).toEqual('/guestlist');
+// });
+
+// test('should redirect and update dom', () => {
+//     render(<BrowserRouter><App/></BrowserRouter>);
+
+//     userEvent.click(screen.getByText(/Guest List/));
+
+//     expect(screen.getByText(/Guest List/i)).toBeInTheDocument();
+// });

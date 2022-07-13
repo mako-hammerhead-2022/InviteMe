@@ -1,7 +1,4 @@
-
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
+import React from 'react'
 
 import GuestForm from './GuestForm'
 import Navbar from './Navbar'
@@ -10,7 +7,6 @@ import SeatingPlan from './SeatingPlan'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
-
   return (
     <>
       <div className="app">
@@ -22,7 +18,6 @@ function App() {
             <Route path="/seatingplan" element={<SeatingPlan />} />
           </Routes>
         </Router>
-
       </div>
     </>
   )
