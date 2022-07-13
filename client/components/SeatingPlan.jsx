@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const guestNames = [
@@ -25,10 +25,19 @@ const guestNames = [
 ]
 
 export default function SeatingPlan() {
+  const [names, setNames] = useState(guestNames)
+
+  function handleOnDragEnd(result) {
+    const items = Array.from(names)
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+
+    setNames(items)
+  }
   return (
     <>
       <h1>Guests Names</h1>
-      <DragDropContext>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="guestNames">
           {(provided) => (
             <ul
@@ -36,7 +45,7 @@ export default function SeatingPlan() {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {guestNames.map(({ id, name }, index) => {
+              {names.map(({ id, name }, index) => {
                 return (
                   <Draggable key={id} draggableId={id} index={index}>
                     {(provided) => (
@@ -51,6 +60,7 @@ export default function SeatingPlan() {
                   </Draggable>
                 )
               })}
+              {provided.placeholder}
             </ul>
           )}
         </Droppable>
