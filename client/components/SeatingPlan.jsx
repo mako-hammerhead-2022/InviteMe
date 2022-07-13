@@ -28,6 +28,7 @@ export default function SeatingPlan() {
   const [names, setNames] = useState(guestNames)
 
   function handleOnDragEnd(result) {
+    if (!result.destination) return
     const items = Array.from(names)
     const [reorderedItem] = items.splice(result.source.index, 1)
     items.splice(result.destination.index, 0, reorderedItem)
