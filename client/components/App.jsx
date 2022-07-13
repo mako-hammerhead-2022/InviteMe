@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>You are invited to the wedding!</h1>
         <ul>
           {fruits.map((fruit) => (
             <li key={fruit}>{fruit}</li>
