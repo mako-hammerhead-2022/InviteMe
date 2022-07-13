@@ -2,7 +2,12 @@ export const RECEIVE_GUESTS = 'RECEIVE_GUESTS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
 
-import { getAllGuests, deleteGuestApi, addNewGuest } from '../apis'
+import {
+  getAllGuests,
+  deleteGuestApi,
+  addNewGuest,
+  updateGuestApi,
+} from '../apis'
 
 export const fetchGuests = () => {
   return (dispatch) => {
@@ -44,6 +49,14 @@ export const addGuest = (newGuest) => {
 export const deleteGuest = (id) => {
   return (dispatch) => {
     return deleteGuestApi(id)
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+export const updateGuest = (updatedGuest) => {
+  return (dispatch) => {
+    return updateGuestApi(updatedGuest)
       .then((guests) => dispatch(receiveGuests(guests)))
       .catch((err) => dispatch(setError(err.message)))
   }

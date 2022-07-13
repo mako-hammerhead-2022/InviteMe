@@ -33,10 +33,10 @@ export function deleteGuestApi(id) {
     })
 }
 
-export function updateGuest(guest) {
+export function updateGuestApi(updatedGuest) {
   return request
     .patch(guestlistUrl)
-    .send(guest)
+    .send(updatedGuest)
     .set('Accept', 'application/json')
     .then((res) => res.body)
     .catch((err) => {
