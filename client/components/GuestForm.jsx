@@ -4,30 +4,32 @@ import { addGuest } from '../actions'
 
 export default function GuestForm() {
   const dispatch = useDispatch()
-  const [guestData, setGuestData] = useState({
-    name: '',
-    email: '',
-    rsvp: '',
-    plusone: '',
-    plusone_Name: '',
-    dietary: '',
-    event_id: '',
-    tableNumber: '',
-  })
+  const [guestData, setGuestData] = useState('')
+  console.log(guestData.dietary)
+  // name: '',
+  // email: '',
+  // rsvp: '',
+  // plusone: '',
+  // plusone_Name: '',
+  // dietary: '',
+  // event_id: '',
+  // tableNumber: '',
+  // })
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(addGuest(guestData))
-    setGuestData({
-      name: '',
-      email: '',
-      rsvp: '',
-      plusone: '',
-      plusone_Name: '',
-      dietary: '',
-      event_id: '',
-      tableNumber: '',
-    })
+    // setGuestData({
+    //   // name: '',
+    //   // email: '',
+    //   // rsvp: '',
+    //   // plusone: '',
+    //   // plusone_Name: '',
+    //   // dietary: '',
+    //   // event_id: '',
+    //   // tableNumber: '',
+    // })
+    setGuestData('')
   }
 
   const handleChange = (evt) => {
@@ -36,6 +38,7 @@ export default function GuestForm() {
     let prev = { ...guestData }
     prev[key] = value
     setGuestData(prev)
+    console.log(value)
   }
 
   return (
