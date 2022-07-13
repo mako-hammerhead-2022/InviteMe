@@ -72,7 +72,7 @@ export default function GuestForm() {
         <input type="radio" id="no" name="rsvp" value={guestData.rsvp} />
         <label htmlFor="yes">NAAAH</label>
         <p>
-          <labe htmlFor="plusone">Would you like to bring a plus one?</labe>
+          <label htmlFor="plusone">Would you like to bring a plus one?</label>
         </p>
         <select
           name="plusone"
@@ -90,7 +90,7 @@ export default function GuestForm() {
           <label htmlFor="plusoneName">Full Name of Your Plus One</label>
         </p>
         <input
-          placeholder="Reese Witherspoon"
+          placeholder="i.e. Reese Witherspoon"
           id="plusoneName"
           type="text"
           name="plusoneName"
