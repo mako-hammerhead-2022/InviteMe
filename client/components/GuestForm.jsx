@@ -8,9 +8,9 @@ export default function GuestForm() {
     name: '',
     email: '',
     rsvp: '',
-    extra: '',
+    plusone: '',
+    plusone_Name: '',
     dietary: '',
-    table_id: '',
     event_id: '',
     tableNumber: '',
   })
@@ -22,9 +22,9 @@ export default function GuestForm() {
       name: '',
       email: '',
       rsvp: '',
-      extra: '',
+      plusone: '',
+      plusone_Name: '',
       dietary: '',
-      table_id: '',
       event_id: '',
       tableNumber: '',
     })
@@ -67,25 +67,36 @@ export default function GuestForm() {
         />
         <p>Are you coming?</p>
         <input type="radio" id="yes" name="rsvp" value={guestData.rsvp} />
-        <label for="yes">YEAAA</label>
+        <label htmlFor="yes">YEAAA</label>
         <br></br>
         <input type="radio" id="no" name="rsvp" value={guestData.rsvp} />
-        <label for="yes">NAAAH</label>
+        <label htmlFor="yes">NAAAH</label>
         <p>
-          <labe htmlFor="extra">Would you like to bring a plus one?</labe>
+          <labe htmlFor="plusone">Would you like to bring a plus one?</labe>
         </p>
         <select
-          name="extra"
-          value={guestData.extra}
+          name="plusone"
+          value={guestData.plousone}
           onChange={(evt) => handleChange(evt)}
         >
-          <option name="extra" value="false">
+          <option name="plusone" value="false">
             No, I fly solo.
           </option>
-          <option name="extra" value="true">
+          <option name="plusone" value="true">
             Yes, I can't be alone for 5 minutes.
           </option>
         </select>
+        <p>
+          <label htmlFor="plusoneName">Full Name of Your Plus One</label>
+        </p>
+        <input
+          placeholder="Reese Witherspoon"
+          id="plusoneName"
+          type="text"
+          name="plusoneName"
+          value={guestData.plusone_Name}
+          onChange={(evt) => handleChange(evt)}
+        />
         <p>
           <label htmlFor="diet">Dietary Restrictions</label>
         </p>
