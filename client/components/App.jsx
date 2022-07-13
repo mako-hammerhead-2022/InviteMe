@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/guestlist" element={<GuestList />} />
             <Route path="/" element={<GuestForm />} />
-            <Route path="/seatingplan" element={<SeatingPlan />} />
+            {/* <Route path="/seatingplan" element={<SeatingPlan />} /> */}
           </Routes>
         </Router>
       </div>
