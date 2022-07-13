@@ -1,19 +1,21 @@
-import { getFruits } from '../apis/fruits'
-
-export const SET_FRUITS = 'SET_FRUITS'
-
-export function setFruits(fruits) {
+export const receiveGuests = (guests) => {
   return {
-    type: SET_FRUITS,
-    payload: fruits,
+    type: RECEIVE_GUESTS,
+    guests,
   }
 }
 
-export function fetchFruits() {
+export const setError = (errMessage) => {
+  return {
+    type: SET_ERROR,
+    errMessage,
+  }
+}
+
+export const addGuest = (newGuest) => {
   return (dispatch) => {
-    return getFruits().then((fruits) => {
-      dispatch(setFruits(fruits))
-      return null
-    })
+    return addNewGuest(newGuest)
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
