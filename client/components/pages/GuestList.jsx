@@ -1,8 +1,10 @@
 import React from 'react'
+import Guest from '../Guest'
 
 export default function GuestList() {
   return (
     <div>
+      <Guest />
       <h1>GuestList</h1>
 
       <h3>Name:</h3>
