@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchFruits } from '../actions'
+import GuestForm from './GuestForm'
 
 function App() {
   const fruits = useSelector((state) => state.fruits)
@@ -13,12 +14,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>You are invited to the wedding!</h1>
-        <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+        <GuestForm />
       </div>
     </>
   )
