@@ -4,32 +4,22 @@ import { addGuest } from '../actions'
 
 export default function GuestForm() {
   const dispatch = useDispatch()
-  const [guestData, setGuestData] = useState('')
-  console.log(guestData.dietary)
-  // name: '',
-  // email: '',
-  // rsvp: '',
-  // plusone: '',
-  // plusone_Name: '',
-  // dietary: '',
-  // event_id: '',
-  // tableNumber: '',
-  // })
+  const initialState = {
+    name: '',
+    email: '',
+    rsvp: '',
+    plusone: '',
+    plusone_Name: '',
+    dietary: '',
+    event_id: '',
+    tableNumber: '',
+  }
+  const [guestData, setGuestData] = useState(initialState)
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(addGuest(guestData))
-    // setGuestData({
-    //   // name: '',
-    //   // email: '',
-    //   // rsvp: '',
-    //   // plusone: '',
-    //   // plusone_Name: '',
-    //   // dietary: '',
-    //   // event_id: '',
-    //   // tableNumber: '',
-    // })
-    setGuestData('')
+    setGuestData(initialState)
   }
 
   const handleChange = (evt) => {
@@ -69,11 +59,11 @@ export default function GuestForm() {
           onChange={(evt) => handleChange(evt)}
         />
         <p>Are you coming?</p>
-        <input type="radio" id="yes" name="rsvp" value={guestData.rsvp} />
+        <input type="radio" id="yes" name="rsvp" value={guestData.true} />
         <label htmlFor="yes">YEAAA</label>
         <br></br>
-        <input type="radio" id="no" name="rsvp" value={guestData.rsvp} />
-        <label htmlFor="yes">NAAAH</label>
+        <input type="radio" id="no" name="rsvp" value={guestData.false} />
+        <label htmlFor="no">NAAAH</label>
         <p>
           <label htmlFor="plusone">Would you like to bring a plus one?</label>
         </p>
@@ -90,24 +80,24 @@ export default function GuestForm() {
           </option>
         </select>
         <p>
-          <label htmlFor="plusoneName">Full Name of Your Plus One</label>
+          <label htmlFor="plusone_Name">Full Name of Your Plus One</label>
         </p>
         <input
           placeholder="i.e. Reese Witherspoon"
-          id="plusoneName"
+          id="plusone_Name"
           type="text"
-          name="plusoneName"
+          name="plusone_Name"
           value={guestData.plusone_Name}
           onChange={(evt) => handleChange(evt)}
         />
         <p>
-          <label htmlFor="diet">Dietary Restrictions</label>
+          <label htmlFor="dietary">Dietary Restrictions</label>
         </p>
         <input
           placeholder="i.e. I only eat meat"
-          id="diet"
+          id="dietary"
           type="text"
-          name="diet"
+          name="dietary"
           value={guestData.dietary}
           onChange={(evt) => handleChange(evt)}
         />
