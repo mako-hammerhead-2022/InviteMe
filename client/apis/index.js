@@ -1,5 +1,5 @@
 const request = require('superagent')
-const guestlistUrl = '/api/v1/guests/guestlist'
+const guestlistUrl = '/api/v1/guests/'
 
 export function addNewGuest(newGuest) {
   console.log('This is returning from apiClient', newGuest)
@@ -14,7 +14,7 @@ export function addNewGuest(newGuest) {
 }
 
 export function getAllGuests() {
-  return request.get('/api/v1/guests').then((res) => res.body)
+  return request.get(guestlistUrl).then((res) => res.body)
 }
 
 export function deleteGuestApi(id) {
