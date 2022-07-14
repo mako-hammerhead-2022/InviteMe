@@ -6,8 +6,15 @@ function getGuests() {
   return db('guest').select()
 }
 
-function addGuest(name, email) {
-  return db('guest').insert({ name, email })
+function addGuest(name, email, plusone, plusone_Name, dietary, rsvp) {
+  return db('guest').insert({
+    name,
+    email,
+    plusone,
+    plusone_Name,
+    dietary,
+    rsvp,
+  })
 }
 
 function deleteGuest(id) {

@@ -1,6 +1,10 @@
 const request = require('superagent')
-const url = '/api/v1/inviteme'
+const url = '/api/v1/guests'
 const guestlistUrl = '/api/v1/inviteme/guestlist'
+
+export function getAllGuests() {
+  return request.get('/api/v1/guests').then((res) => res.body)
+}
 
 export function addNewGuest(newGuest) {
   return request
@@ -11,10 +15,6 @@ export function addNewGuest(newGuest) {
     .catch((err) => {
       console.err(err.message)
     })
-}
-
-export function getAllGuests() {
-  return request.get('/api/v1/guests').then((res) => res.body)
 }
 
 export function deleteGuestApi(id) {
