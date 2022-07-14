@@ -1,8 +1,8 @@
 import React from 'react'
 
-import GuestForm from './GuestForm'
+import RSVPForm from './RSVPForm'
 import Navbar from './Navbar'
-import GuestList from './pages/GuestList'
+import GuestList from './GuestList'
 import SeatingPlan from './SeatingPlan'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/guestlist" element={<GuestList />} />
-            <Route path="/" element={<GuestForm />} />
+            <Route path="/" element={<RSVPForm />} />
             {/* <Route path="/seatingplan" element={<SeatingPlan />} /> */}
           </Routes>
         </Router>

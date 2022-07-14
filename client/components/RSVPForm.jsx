@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addGuest } from '../actions'
+import { updateGuest } from '../actions'
 
-export default function GuestForm() {
+export default function RSVPForm() {
   const dispatch = useDispatch()
   const initialState = {
     name: '',
@@ -18,7 +18,7 @@ export default function GuestForm() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    dispatch(addGuest(guestData))
+    dispatch(updateGuest(guestData))
     setGuestData(initialState)
   }
 
@@ -32,7 +32,7 @@ export default function GuestForm() {
   }
 
   return (
-    <div className="guestform">
+    <div className="rsvpform">
       <h1>We are pleased to invite you to our wedding!</h1>
       <h2>Please confirm your attendance below:</h2>
       <form onSubmit={handleSubmit}>
