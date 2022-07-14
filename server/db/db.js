@@ -1,8 +1,3 @@
-// const connection = require('./connection')
-
-// const config = require('./knexfile')
-// const knex = require('knex')
-// const connection = knex(config.development)
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const db = require('knex')(config)
@@ -24,7 +19,7 @@ function deleteGuest(id) {
 // }
 
 function patchGuest(id, updatedGuest) {
-  return db('guest').patch(updatedGuest).where('id', id)
+  return db('guest').update(updatedGuest).where('id', id)
 }
 
 module.exports = {
@@ -32,5 +27,4 @@ module.exports = {
   getGuests,
   deleteGuest,
   patchGuest,
-  db,
 }
