@@ -18,7 +18,10 @@ function addGuest(name, email, plusone, plusone_Name, dietary, rsvp) {
 }
 
 function deleteGuest(id) {
-  return db('guest').del().where('id', id)
+  return db('guest')
+    .del()
+    .where('id', id)
+    .then(() => getGuests())
 }
 
 // function guest(id, db = connection) {

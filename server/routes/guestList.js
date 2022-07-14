@@ -2,8 +2,8 @@ const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
 
-//GET all guests /api/v1
-router.get('/', (req, res) => {
+//GET guestlist /api/v1/guestlist
+router.get('/guestlist', (req, res) => {
   db.getGuests()
     .then((guests) => {
       res.json(guests)
@@ -15,15 +15,12 @@ router.get('/', (req, res) => {
     })
 })
 
-//delete api/v1/guestlist
+//delete api/v1/guestlist/:id
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  // const id = req.body.id
-  const guest = req.body
+  const { id } = req.params
 
-  db.deleteGuest(id, guest)
+  db.deleteGuest(id)
     .then((guest) => {
-      guest.id = id
       res.json(guest)
     })
     .catch((err) => {
@@ -32,38 +29,38 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-//POST add a guest api/v1
-// router.post('/', async (req, res) => {
-//   const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
-//   try {
-//     const newGuest = await db.addGuest(
-//       name,
-//       email,
-//       plusone,
-//       plusone_Name,
-//       dietary,
-//       rsvp
-//     )
-//     res.status(200).json(newGuest)
-//   } catch (err) {
-//     res.status(400).json({ error: err.message })
-//   }
-// })
+//POST add a guest api/v1/guestlist
+router.post('/', async (req, res) => {
+  const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
+  try {
+    const newGuest = await db.addGuest(
+      name,
+      email,
+      plusone,
+      plusone_Name,
+      dietary,
+      rsvp
+    )
+    res.status(200).json(newGuest)
+  } catch (err) {
+    res.status(400).json({ error: err.message })
+  }
+})
 
-// PATCH guest api/v1
-// router.patch('/:id', (req, res) => {
-//   const id = req.params.id
-//   const guest = req.body
+//UPDATE guest api/v1/guestlist
+router.patch('/', (req, res) => {
+  const id = req.params.id
+  const guest = req.body
 
-//   db.patchGuest(id, guest)
-//     .then((guest) => {
-//       guest.id = id
-//       res.json(guest)
-//     })
-//     .catch((err) => {
-//       console.error(err.message)
-//       res.status(500).send('Something went wrong!')
-//     })
-// })
+  db.updateGuest(id, guest)
+    .then((guest) => {
+      guest.id = id
+      res.json(guest)
+    })
+    .catch((err) => {
+      console.error(err.message)
+      res.status(500).send('Something went wrong!')
+    })
+})
 
 module.exports = router

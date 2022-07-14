@@ -15,14 +15,12 @@ router.get('/', (req, res) => {
     })
 })
 
-//delete guest/ api/guest
-router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  const guest = req.body
+//delete guest/ api/v1/guests
+router.delete('/', (req, res) => {
+  const { id } = req.body
 
-  db.deleteGuest(id, guest)
+  db.deleteGuest(id)
     .then((guest) => {
-      guest.id = id
       res.json(guest)
     })
     .catch((err) => {

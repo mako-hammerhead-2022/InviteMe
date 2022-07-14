@@ -1,4 +1,4 @@
-import { RECEIVE_GUESTS, DELETE_GUEST_SUCCESS } from '../actions'
+import { RECEIVE_GUESTS } from '../actions'
 
 const initialState = []
 
@@ -6,8 +6,8 @@ const guestsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_GUESTS:
       return action.guests
-    case DELETE_GUEST_SUCCESS:
-      return state.filter((guest) => guest.id !== action.id)
+    // case DEL_GUEST:
+    //   return action.payload
 
     default:
       return state

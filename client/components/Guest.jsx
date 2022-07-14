@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteGuest } from '../actions/index'
+import { deleteGuest } from '../actions'
 
 export default function Guest({ guestInfo }) {
-  console.log(guestInfo)
+  // console.log(guestInfo)
   const dispatch = useDispatch()
-  const id = guestInfo.id
 
-  function handleDelete() {
+  const handleDelete = (e) => {
+    e.preventDefault()
+    const id = guestInfo.id
     dispatch(deleteGuest(id))
   }
 
