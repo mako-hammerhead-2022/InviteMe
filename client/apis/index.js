@@ -14,12 +14,7 @@ export function addNewGuest(newGuest) {
 }
 
 export function getAllGuests() {
-  return request
-    .get(guestlistUrl)
-    .then((res) => res.body)
-    .catch((err) => {
-      console.err(err.message)
-    })
+  return request.get('/api/v1/guests').then((res) => res.body)
 }
 
 export function deleteGuestApi(id) {
