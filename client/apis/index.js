@@ -2,10 +2,9 @@ const request = require('superagent')
 
 const guestlistUrl = '/api/v1/guests/'
 
-
-export function getAllGuests() {
-  return request.get('/api/v1/guests').then((res) => res.body)
-}
+// export function getAllGuests() {
+//   return request.get('/api/v1/guests').then((res) => res.body)
+// }
 
 export function addNewGuest(newGuest) {
   console.log('This is returning from apiClient', newGuest)
@@ -18,7 +17,6 @@ export function addNewGuest(newGuest) {
       console.err(err.message)
     })
 }
-
 
 export function getAllGuests() {
   return request.get(guestlistUrl).then((res) => res.body)

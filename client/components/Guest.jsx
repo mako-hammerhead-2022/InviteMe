@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { deleteGuest, updateGuest } from '../actions'
 
 export default function Guest({ guestInfo }) {
-  console.log(guestInfo)
+  // console.log(guestInfo)
   const dispatch = useDispatch()
 
   function handleDelete(evt, id) {
