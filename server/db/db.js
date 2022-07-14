@@ -23,13 +23,14 @@ function deleteGuest(id) {
 //   return db('guest').select().where('id', id)
 // }
 
-// function patchGuest(id, updatedPost, db = connection) {
-//   return db('guest').patch(updatedPost).where('id', id)
-// }
+function patchGuest(id, updatedGuest) {
+  return db('guest').patch(updatedGuest).where('id', id)
+}
 
 module.exports = {
   addGuest,
   getGuests,
   deleteGuest,
+  patchGuest,
   db,
 }
