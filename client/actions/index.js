@@ -2,6 +2,9 @@ export const RECEIVE_GUESTS = 'RECEIVE_GUESTS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
 
+export const DELETE_GUEST_PENDING = 'DELETE_GUEST_PENDING'
+export const DELETE_GUEST_SUCCESS = 'DELETE_GUEST_SUCCESS'
+
 import {
   getAllGuests,
   deleteGuestApi,
@@ -41,6 +44,19 @@ export const setLoading = () => {
   }
 }
 
+export function deleteGuestPending() {
+  return {
+    type: DELETE_GUEST_PENDING,
+  }
+}
+
+export function deleteGuestSuccess(id) {
+  return {
+    type: DELETE_GUEST_SUCCESS,
+    id,
+  }
+}
+
 export const addGuest = (newGuest) => {
   return (dispatch) => {
     return addNewGuest(newGuest)
@@ -52,7 +68,7 @@ export const addGuest = (newGuest) => {
 export const deleteGuest = (id) => {
   return (dispatch) => {
     return deleteGuestApi(id)
-      .then((guests) => dispatch(receiveGuests(guests)))
+      .then(() => dispatch(deleteGuestSuccess(id)))
       .catch((err) => dispatch(setError(err.message)))
   }
 }
