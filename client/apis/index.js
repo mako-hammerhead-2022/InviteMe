@@ -1,10 +1,10 @@
 const request = require('superagent')
-const url = '/api/v1/inviteme'
-const guestlistUrl = '/api/v1/inviteme/guestlist'
+const guestlistUrl = '/api/v1/guests/guestlist'
 
 export function addNewGuest(newGuest) {
+  console.log('This is returning from apiClient', newGuest)
   return request
-    .post(url)
+    .post(guestlistUrl)
     .send(newGuest)
     .set('Accept', 'application/json')
     .then((res) => res.body)
