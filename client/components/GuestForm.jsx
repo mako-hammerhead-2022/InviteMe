@@ -7,7 +7,7 @@ export default function GuestForm() {
   const initialState = {
     name: '',
     email: '',
-    rsvp: true,
+    rsvp: '',
     plusone: '',
     plusone_Name: '',
     dietary: '',
@@ -59,10 +59,10 @@ export default function GuestForm() {
           onChange={(evt) => handleChange(evt)}
         />
         <p>Are you coming?</p>
-        <input type="radio" id="yes" name="rsvp" value={false} />
+        <input type="radio" id="yes" name="rsvp" value={guestData.true} />
         <label htmlFor="yes">YEAAA</label>
         <br></br>
-        <input type="radio" id="no" name="rsvp" value={false} />
+        <input type="radio" id="no" name="rsvp" value={guestData.false} />
         <label htmlFor="no">NAAAH</label>
         <p>
           <label htmlFor="plusone">Would you like to bring a plus one?</label>
