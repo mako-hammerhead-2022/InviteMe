@@ -47,12 +47,40 @@ router.post('/', async (req, res) => {
   }
 })
 
-// PATCH guest api/v1
+//GET single guest /api/v1/rsvp/:id
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.findGuestById(id)
+    .then((guest) => {
+      res.json(guest)
+      return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
+//UPDATE single guest /api/v1/rsvp/:id
+// router.patch('/:id', (req, res) => {
+//   const id = Number(req.body.params)
+//   const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
+//   db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
+//     .then((updatedGuest) => {
+//       res.json(updatedGuest)
+//       return null
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//       res.status(500).json({ message: 'Something went wrong' })
+//     })
+// })
+
 router.patch('/:id', (req, res) => {
   const id = req.params.id
   const guest = req.body
 
-  db.patchGuest(id, guest)
+  db.updateGuest(id, guest)
     .then((guest) => {
       guest.id = id
       res.json(guest)
