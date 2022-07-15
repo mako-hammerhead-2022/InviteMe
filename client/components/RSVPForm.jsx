@@ -16,6 +16,12 @@ export default function RSVPForm() {
   }
   const [guestData, setGuestData] = useState(initialState)
 
+  //api function fetches data from db
+  //or passing via reducts
+
+  //useeffect to call single user db api
+  //useparams to get id
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(updateGuest(guestData))

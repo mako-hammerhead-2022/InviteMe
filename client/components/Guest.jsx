@@ -1,10 +1,26 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { deleteGuest } from '../actions'
+
+import { sendEmails } from '../apis'
 
 export default function Guest({ guestInfo }) {
   // console.log(guestInfo)
   const dispatch = useDispatch()
+
+  // const guests = useSelector((state) => state.guests)
+
+  const handleSubmit = (e) => {
+    // [{email: '', name: '', id: ''}]
+    // const recipients = guests.map((guest) => ({
+    //   email: guest.email,
+    //   id: guest.id,
+    // }))
+    const recipients = guestInfo.email
+    e.preventDefault()
+    sendEmails(recipients)
+    console.log('button clicked')
+  }
 
   const handleDelete = (e) => {
     e.preventDefault()
@@ -26,7 +42,10 @@ export default function Guest({ guestInfo }) {
       </ul>
       <button>Add Guest</button>
       {/* //send id with invite button */}
-      <button>Send Invite</button>
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Send Invite</button>
+      </form>
+
       <button onClick={handleDelete}>Delete Guest</button>
     </div>
   )
