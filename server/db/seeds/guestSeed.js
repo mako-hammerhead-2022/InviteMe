@@ -1,7 +1,9 @@
+// const uuid = require('uuid')
+
 exports.seed = function (knex) {
   return knex('guest').insert([
     {
-      id: 1,
+      id: '1',
       name: 'Ayoung',
       email: 'ayoung@gmail.com',
       plusone: true,
@@ -12,7 +14,7 @@ exports.seed = function (knex) {
       table_Number: 1,
     },
     {
-      id: 2,
+      id: '2',
       name: 'Beyond',
       email: 'Beyond@gmail.com',
       plusone: true,
@@ -23,7 +25,7 @@ exports.seed = function (knex) {
       table_Number: 1,
     },
     {
-      id: 3,
+      id: '3',
       name: 'Angela',
       email: 'Angela@gmail.com',
       plusone: false,
@@ -34,7 +36,7 @@ exports.seed = function (knex) {
       table_Number: 2,
     },
     {
-      id: 4,
+      id: '4',
       name: 'David',
       email: 'David@gmail.com',
       plusone: false,
@@ -45,7 +47,7 @@ exports.seed = function (knex) {
       table_Number: 3,
     },
     {
-      id: 5,
+      id: '5',
       name: 'Ngairo',
       email: 'Ngairo@gmail.com',
       plusone: false,
