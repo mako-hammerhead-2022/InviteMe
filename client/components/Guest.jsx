@@ -1,13 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteGuest, updateGuest } from '../actions'
+import { deleteGuest } from '../actions/index'
 
 export default function Guest({ guestInfo }) {
   // console.log(guestInfo)
   const dispatch = useDispatch()
+  const id = guestInfo.id
 
-  function handleDelete(evt, id) {
-    evt.preventDefault()
+  function handleDelete() {
     dispatch(deleteGuest(id))
   }
 
@@ -23,9 +23,7 @@ export default function Guest({ guestInfo }) {
         <li>Event Id: {guestInfo.event_id}</li>
         <li>Table Number: {guestInfo.table_Number}</li>
       </ul>
-      <button onClick={(evt) => handleDelete(evt, guestInfo.id)}>
-        Delete Guest
-      </button>
+      <button onClick={handleDelete}>Delete Guest</button>
     </div>
   )
 }

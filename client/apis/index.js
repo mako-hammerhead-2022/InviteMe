@@ -2,30 +2,22 @@ const request = require('superagent')
 
 const guestlistUrl = '/api/v1/guests/'
 
-// export function getAllGuests() {
-//   return request.get('/api/v1/guests').then((res) => res.body)
-// }
+export function getAllGuests() {
+  return request.get('/api/v1/guests').then((res) => res.body)
+}
+
+export function deleteGuestApi(id) {
+  return request
+    .delete('/api/v1/guestlist')
+    .send({ id })
+    .then((res) => res.body)
+}
 
 export function addNewGuest(newGuest) {
   console.log('This is returning from apiClient', newGuest)
   return request
     .post(guestlistUrl)
     .send(newGuest)
-    .set('Accept', 'application/json')
-    .then((res) => res.body)
-    .catch((err) => {
-      console.err(err.message)
-    })
-}
-
-export function getAllGuests() {
-  return request.get(guestlistUrl).then((res) => res.body)
-}
-
-export function deleteGuestApi(id) {
-  return request
-    .delete(guestlistUrl)
-    .send({ id })
     .set('Accept', 'application/json')
     .then((res) => res.body)
     .catch((err) => {
@@ -42,4 +34,11 @@ export function updateGuestApi(updatedGuest) {
     .catch((err) => {
       console.err(err.message)
     })
+}
+
+export function sendEmails(recipients) {
+  return request
+    .post(`${guestListUrl}send-invites`)
+    .send(recipients)
+    .then((res) => res.body)
 }

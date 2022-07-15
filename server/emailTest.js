@@ -15,7 +15,8 @@ const nodemailer = require('nodemailer')
 //   text: 'this is a dev test email',
 // }
 
-function sendEmail(options) {
+function sendEmail(recipient) {
+  // [{email: 'hi@inviteme.com', id: 1}]
   const transporter = nodemailer.createTransport({
     service: 'hotmail',
     auth: {
@@ -24,19 +25,19 @@ function sendEmail(options) {
     },
   })
 
-  // const options = {
-  //   from: 'invitemetesting@outlook.com',
-  //   to: [],
-  //   subject: 'another test email',
-  //   text: 'this is a dev test email',
-  // }
-
-  transporter.sendMail(options, function (err, info) {
-    if (err) {
-      console.log(err)
-      return
-    }
-    console.log('sent: ' + info.response)
+  const options = {
+    from: 'invitemetesting@outlook.com',
+    to: recipient.email,
+    subject: 'another test email',
+    text: `this is a dev test email http://localhost:3000/rsvp/${recipient.id}`,
+  }
+  return new Promise((resolve, reject) => {
+    transporter.sendMail(options, function (err, info) {
+      if (err) {
+        reject(err)
+      }
+      resolve(info)
+    })
   })
 }
 

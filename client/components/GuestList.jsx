@@ -4,7 +4,7 @@ import Guest from './Guest'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchGuests } from '../actions'
 
-import { sendEmail } from '../../server/emailTest'
+import { sendEmails } from '../apis'
 
 // const nodemailer = require('nodemailer')
 
@@ -34,20 +34,25 @@ import { sendEmail } from '../../server/emailTest'
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)
   const dispatch = useDispatch()
-  const options = {
-    from: 'invitemetesting@outlook.com',
-    to: [],
-    subject: 'another test email',
-    text: 'this is a dev test email',
-  }
+  // const options = {
+  //   from: 'invitemetesting@outlook.com',
+  //   to: [],
+  //   subject: 'another test email',
+  //   text: 'this is a dev test email',
+  // }
 
   useEffect(() => {
     dispatch(fetchGuests())
   }, [])
 
   const handleSubmit = (e) => {
+    // [{email: '', name: '', id: ''}]
+    const recipients = guests.map((guest) => ({
+      email: guest.email,
+      id: guest.id,
+    }))
     e.preventDefault()
-    sendEmail(options)
+    sendEmails(recipients)
     console.log('button clicked')
   }
 
@@ -57,7 +62,6 @@ export default function GuestList() {
         <div>
           {guests.map((guest) => {
             console.log(guest.email)
-            options.to.push(guest.email)
             return <Guest key={guest.id} guestInfo={guest} />
           })}
         </div>
