@@ -1,12 +1,12 @@
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
-const db = require('knex')(config)
+const connection = require('knex')(config)
 
-function getGuests() {
+function getGuests(db = connection) {
   return db('guest').select()
 }
 
-function addGuest(name, email, plusone, plusone_Name, dietary, rsvp) {
+function addGuest(name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number, db = connection) {
   return db('guest').insert({
     name,
     email,
@@ -14,10 +14,12 @@ function addGuest(name, email, plusone, plusone_Name, dietary, rsvp) {
     plusone_Name,
     dietary,
     rsvp,
+    event_id,
+    table_Number,
   })
 }
 
-function deleteGuest(id) {
+function deleteGuest(id, db = connection) {
   return db('guest').del().where('id', id)
   // .then(() => getGuests())
 }
@@ -26,7 +28,7 @@ function deleteGuest(id) {
 //   return db('guest').select().where('id', id)
 // }
 
-function patchGuest(id, updatedGuest) {
+function patchGuest(id, updatedGuest, db = connection) {
   return db('guest').update(updatedGuest).where('id', id)
 }
 
