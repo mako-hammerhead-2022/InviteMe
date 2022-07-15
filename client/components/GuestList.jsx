@@ -13,7 +13,6 @@ export default function GuestList() {
     dispatch(fetchGuests())
   }, [])
 
-  console.log('This is returning from GuestList', guests)
   return (
     <div>
       {guests.map((guest) => {
