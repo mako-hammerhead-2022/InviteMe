@@ -66,7 +66,7 @@ router.patch('/:id', (req, res) => {
   const id = req.params.id
   const guest = req.body
 
-  db.patchGuest(id, guest)
+  db.updateGuest(id, guest)
     .then((guest) => {
       guest.id = id
       res.json(guest)
@@ -93,9 +93,9 @@ router.get('/:id', (req, res) => {
 
 //UPDATE single guest /api/v1/guests/:id
 router.patch('/:id', (req, res) => {
-  const { id } = req.body.params
-  const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
-  db.updateGuestById(id, { name, email, plusone, plusone_Name, dietary, rsvp })
+  const id = Number(req.body.params)
+  const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
+  db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
     .then((updatedGuest) => {
       res.json(updatedGuest)
       return null
