@@ -1,0 +1,77 @@
+const db = require('./db')
+
+const knex = require('knex')
+const testConfig = require('../db/knexfile').test // Test Database
+const testDb = knex(testConfig)
+
+beforeAll(() => {
+  return testDb.migrate.latest()
+})
+
+beforeEach(async () => {
+  return testDb.seed.run()
+})
+
+afterAll(() => {
+  return testDb.destroy()
+})
+
+describe('test db functions', () => {
+  it('tests the getGuests function', () => {
+    expect.assertions(2)
+    return db.getGuests(testDb).then((result) => {
+      expect(result[0].name).toBe('Ayoung')
+      expect(result).toHaveLength(5)
+    })
+  })
+  it('tests the addGuest function', () => {
+    const addGuest = [
+      'Benjamin',
+      'ben@devacademy.co.nz',
+      true,
+      'Savannah',
+      'Dairy products',
+      true,
+      6,
+      7,
+    ]
+    expect.assertions(2)
+    return db
+      .addGuest(...addGuest, testDb)
+      .then(() => {
+        return db.getGuests(testDb)
+      })
+      .then((result) => {
+        expect(result[5].name).toBe('Benjamin')
+        expect(result).toHaveLength(6)
+      })
+  })
+  it('tests the deleteGuest function', () => {
+    expect.assertions(2)
+    return db
+      .deleteGuest(1, testDb)
+      .then(() => {
+        return db.getGuests(testDb)
+      })
+      .then((result) => {
+        expect(result[0].name).toBe('Beyond')
+        expect(result).toHaveLength(4)
+      })
+  })
+  it('test the updateGuest', () => {
+    expect.assertions(2)
+    const patchGuest = {
+      name: 'Ngairo',
+    }
+    return db
+      .patchGuest(3, patchGuest, testDb) // 1: update data user name: 'Angela
+      .then(() => {
+        return db.getGuests(testDb) // 2: receive all guests
+      })
+      .then((result) => {
+        // 3: access the returned guests
+        expect(result[2].name).toBe('Ngairo')
+        expect(result).toHaveLength(5)
+      })
+  })
+})
