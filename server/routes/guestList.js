@@ -28,6 +28,7 @@ router.post('/send-invites', (req, res) => {
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
+
 //delete api/v1/guestlist
 router.delete('/:id', (req, res) => {
   const id = req.params.id
