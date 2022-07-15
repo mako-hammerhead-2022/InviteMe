@@ -1,5 +1,4 @@
 //const routes = require('./guestRoute')
-
 const knex = require('knex')
 const testConfig = require('../db/knexfile').test // Test Database
 const testRoutes = knex(testConfig)
@@ -59,7 +58,7 @@ describe('test routes', () => {
         expect(result).toHaveLength(6)
       })
   })
-  it('test the updateGuest', () => {
+  it('test the router.patch', () => {
     expect.assertions(2)
     const patchGuest = {
       name: 'Angela',
