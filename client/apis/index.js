@@ -6,10 +6,10 @@ export function getAllGuests() {
   return request.get('/api/v1/guests/').then((res) => res.body)
 }
 
-export function sendEmails(recipients) {
+export function sendEmail(recipient) {
   return request
     .post(`${guestlistUrl}send-invites`)
-    .send(recipients)
+    .send({ recipient })
     .then((res) => res.body)
 }
 

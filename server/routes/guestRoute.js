@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/send-invites', (req, res) => {
-  const { recipients } = req.body
-  sendEmail(recipients)
+  const { recipient } = req.body
+  sendEmail(recipient)
     .then((info) => {
       console.log(info)
       res.sendStatus(200)

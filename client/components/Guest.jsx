@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteGuest } from '../actions'
 
-import { sendEmails } from '../apis'
+import { sendEmail } from '../apis'
 
 export default function Guest({ guestInfo }) {
   // console.log(guestInfo)
@@ -16,9 +16,9 @@ export default function Guest({ guestInfo }) {
     //   email: guest.email,
     //   id: guest.id,
     // }))
-    const recipients = guestInfo.email
+    const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
-    sendEmails(recipients)
+    sendEmail(recipient)
     console.log('button clicked')
   }
 
