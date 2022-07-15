@@ -6,8 +6,8 @@ const guestsReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_GUESTS:
       return action.guests
-    // case DEL_GUEST:
-    //   return action.payload
+
+
 
     default:
       return state
