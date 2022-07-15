@@ -1,24 +1,47 @@
 const nodemailer = require('nodemailer')
 
-const transporter = nodemailer.createTransport({
-  service: 'hotmail',
-  auth: {
-    user: 'invitemetesting@outlook.com',
-    pass: 'DevAcademy1',
-  },
-})
+// const transporter = nodemailer.createTransport({
+//   service: 'hotmail',
+//   auth: {
+//     user: 'invitemetesting@outlook.com',
+//     pass: 'DevAcademy1',
+//   },
+// })
 
-const options = {
-  from: 'invitemetesting@outlook.com',
-  to: 'invitemetesting@outlook.com',
-  subject: 'another test email',
-  text: 'this is a dev test email',
+// const options = {
+//   from: 'invitemetesting@outlook.com',
+//   to: 'invitemetesting@outlook.com',
+//   subject: 'another test email',
+//   text: 'this is a dev test email',
+// }
+
+function sendEmail(recipient) {
+  // [{email: 'hi@inviteme.com', id: 1}]
+  const transporter = nodemailer.createTransport({
+    service: 'hotmail',
+    auth: {
+      user: 'invitemetesting@outlook.com',
+      pass: 'DevAcademy1',
+    },
+  })
+
+  const options = {
+    from: 'invitemetesting@outlook.com',
+    to: recipient.email,
+    subject: 'another test email',
+    text: `this is a dev test email http://localhost:3000/rsvp/${recipient.id}`,
+  }
+  return new Promise((resolve, reject) => {
+    transporter.sendMail(options, function (err, info) {
+      if (err) {
+        reject(err)
+      }
+      resolve(info)
+    })
+  })
 }
 
-transporter.sendMail(options, function (err, info) {
-  if (err) {
-    console.log(err)
-    return
-  }
-  console.log('sent: ' + info.response)
-})
+// sendEmail()
+module.exports = {
+  sendEmail,
+}

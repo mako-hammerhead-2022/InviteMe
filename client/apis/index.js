@@ -6,6 +6,13 @@ export function getAllGuests() {
   return request.get('/api/v1/guests/').then((res) => res.body)
 }
 
+export function sendEmail(recipient) {
+  return request
+    .post(`${guestlistUrl}send-invites`)
+    .send({ recipient })
+    .then((res) => res.body)
+}
+
 export function deleteGuestApi(id) {
   return request
     .del('/api/v1/guests/')

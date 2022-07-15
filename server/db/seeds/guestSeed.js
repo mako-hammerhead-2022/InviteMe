@@ -6,7 +6,7 @@ exports.seed = function (knex) {
         {
           id: 1,
           name: 'Ayoung',
-          email: 'ayoung@gmail.com',
+          email: 'ayoungleeh@gmail.com',
           plusone: true,
           plusone_Name: 'Haru',
           dietary: 'none',
@@ -17,7 +17,7 @@ exports.seed = function (knex) {
         {
           id: 2,
           name: 'Beyond',
-          email: 'Beyond@gmail.com',
+          email: 'allstar_beyond@hotmail.com',
           plusone: true,
           plusone_Name: 'Christina',
           dietary: 'fish',
@@ -28,7 +28,7 @@ exports.seed = function (knex) {
         {
           id: 3,
           name: 'Angela',
-          email: 'Angela@gmail.com',
+          email: 'angela_yk@hotmail.com',
           plusone: false,
           plusone_Name: '',
           dietary: 'dairy',
@@ -39,7 +39,7 @@ exports.seed = function (knex) {
         {
           id: 4,
           name: 'David',
-          email: 'David@gmail.com',
+          email: 'davehu0623@gmail.com',
           plusone: false,
           plusone_Name: '',
           dietary: 'pesca-pescatarian',
@@ -50,7 +50,7 @@ exports.seed = function (knex) {
         {
           id: 5,
           name: 'Ngairo',
-          email: 'Ngairo@gmail.com',
+          email: 'ngairotap@gmail.com',
           plusone: false,
           plusone_Name: '',
           dietary: 'none',
