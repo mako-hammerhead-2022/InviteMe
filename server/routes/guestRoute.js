@@ -1,6 +1,7 @@
 const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
+const { sendEmail } = require('../emailTest')
 
 //GET all guests /api/v1
 router.get('/', (req, res) => {
@@ -8,6 +9,19 @@ router.get('/', (req, res) => {
     .then((guests) => {
       res.json(guests)
       return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
+router.post('/send-invites', (req, res) => {
+  const { recipient } = req.body
+  sendEmail(recipient)
+    .then((info) => {
+      console.log(info)
+      res.sendStatus(200)
     })
     .catch((err) => {
       console.log(err)
