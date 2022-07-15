@@ -37,7 +37,7 @@
     "express": "^4.17.2",
     "knex": "^2.1.0",
     "nodemailer": "^6.7.7",
-    "pg": "^8.7.1",
+    "pg": "^8.7.3",
     "react-beautiful-dnd": "^13.1.0",
     "sqlite3": "^5.0.8",
     "superagent": "7.1.1",
@@ -79,5 +79,9 @@
     "semi": false,
     "singleQuote": true
   },
-  "browserslist": "> 2%, not dead"
+  "browserslist": "> 2%, not dead",
+  "engines": {
+    "node": "14.x"
+  },
+  "build": "webpack && knex migrate:latest"
 }
