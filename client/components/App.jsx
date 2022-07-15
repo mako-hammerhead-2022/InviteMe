@@ -13,14 +13,16 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/guestlist" element={<GuestList />} />
-<<<<<<< container
-            <Route path="/" element={<GuestForm />} />
+
+            <Route path="/" element={<GuestList />} />
+            <Route path="/rsvp/:id" element={<RSVPForm />} />
+
+           
+
+           
             <Route path="/seatingplan" element={<SeatingPlan />} />
-=======
-            <Route path="/" element={<RSVPForm />} />
-            {/* <Route path="/seatingplan" element={<SeatingPlan />} /> */}
->>>>>>> main
+
+
           </Routes>
         </Router>
       </div>

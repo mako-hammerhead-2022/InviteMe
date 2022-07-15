@@ -3,14 +3,18 @@ const request = require('superagent')
 const guestlistUrl = '/api/v1/guests/'
 
 export function getAllGuests() {
-  return request.get('/api/v1/guests').then((res) => res.body)
+  return request.get('/api/v1/guests/').then((res) => res.body)
 }
 
 export function deleteGuestApi(id) {
   return request
-    .delete('/api/v1/guestlist')
+    .del('/api/v1/guests/')
     .send({ id })
+    .set('Accept', 'application/json')
     .then((res) => res.body)
+    .catch((err) => {
+      console.err(err.message)
+    })
 }
 
 export function addNewGuest(newGuest) {
@@ -27,7 +31,7 @@ export function addNewGuest(newGuest) {
 
 export function updateGuestApi(updatedGuest) {
   return request
-    .patch(guestlistUrl)
+    .patch('/api/v1/guests/:id')
     .send(updatedGuest)
     .set('Accept', 'application/json')
     .then((res) => res.body)
