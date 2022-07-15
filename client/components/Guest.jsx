@@ -24,6 +24,9 @@ export default function Guest({ guestInfo }) {
         <li>Event Id: {guestInfo.event_id}</li>
         <li>Table Number: {guestInfo.table_Number}</li>
       </ul>
+      <button>Add Guest</button>
+      {/* //send id with invite button */}
+      <button>Send Invite</button>
       <button onClick={handleDelete}>Delete Guest</button>
     </div>
   )

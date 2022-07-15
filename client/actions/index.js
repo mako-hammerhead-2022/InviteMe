@@ -47,7 +47,7 @@ export const setLoading = () => {
 // }
 export const deleteGuest = (id) => {
   return (dispatch) => {
-    return deleteGuestApi(id).then((guest) => dispatch(receiveGuests(guest)))
+    return deleteGuestApi(id).then(() => dispatch(fetchGuests()))
     // .catch((err) => dispatch(setError(err.message)))
   }
 }

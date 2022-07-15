@@ -13,8 +13,8 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/guestlist" element={<GuestList />} />
-            <Route path="/" element={<RSVPForm />} />
+            <Route path="/" element={<GuestList />} />
+            <Route path="/rsvp/:id" element={<RSVPForm />} />
             {/* <Route path="/seatingplan" element={<SeatingPlan />} /> */}
           </Routes>
         </Router>

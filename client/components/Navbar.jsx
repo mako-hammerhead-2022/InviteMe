@@ -7,13 +7,13 @@ export default function Navbar() {
       <div className="topRight">
         <ul className="topList">
           <Link to="/">
-            <li className="topListItem">RSVP</li>
+            <li className="topListItem">GUEST LIST</li>
           </Link>
           <Link to="/seatingplan">
             <li className="topListItem">SEATING PLAN</li>
           </Link>
-          <Link to="/guestlist">
-            <li className="topListItem">GUEST LIST</li>
+          <Link to="/rsvp/1">
+            <li className="topListItem">RSVP</li>
           </Link>
         </ul>
       </div>

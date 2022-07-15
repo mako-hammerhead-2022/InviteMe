@@ -31,7 +31,7 @@ export function addNewGuest(newGuest) {
 
 export function updateGuestApi(updatedGuest) {
   return request
-    .patch(guestlistUrl)
+    .patch('/api/v1/guests/:id')
     .send(updatedGuest)
     .set('Accept', 'application/json')
     .then((res) => res.body)

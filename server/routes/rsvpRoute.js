@@ -2,8 +2,8 @@ const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
 
-//GET guestlist /api/v1/guestlist
-router.get('/guestlist', (req, res) => {
+//GET all guests /api/v1
+router.get('/', (req, res) => {
   db.getGuests()
     .then((guests) => {
       res.json(guests)
@@ -15,9 +15,9 @@ router.get('/guestlist', (req, res) => {
     })
 })
 
-//delete api/v1/guestlist/:id
-router.delete('/:id', (req, res) => {
-  const { id } = req.params
+//delete guest/ api/v1/guests
+router.delete('/', (req, res) => {
+  const { id } = req.body
 
   db.deleteGuest(id)
     .then((guest) => {
@@ -29,7 +29,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-//POST add a guest api/v1/guestlist
+//POST add a guest api/v1
 router.post('/', async (req, res) => {
   const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
   try {
@@ -47,12 +47,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-//UPDATE guest api/v1/guestlist
-router.patch('/', (req, res) => {
+// PATCH guest api/v1
+router.patch('/:id', (req, res) => {
   const id = req.params.id
   const guest = req.body
 
-  db.updateGuest(id, guest)
+  db.patchGuest(id, guest)
     .then((guest) => {
       guest.id = id
       res.json(guest)
