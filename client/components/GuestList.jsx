@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchGuests } from '../actions'
 
+import AddGuests from './AddGuests'
+
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)
   const dispatch = useDispatch()
@@ -18,6 +20,7 @@ export default function GuestList() {
       {guests.map((guest) => {
         return <Guest key={guest.id} guestInfo={guest} />
       })}
+      <AddGuests />
     </div>
   )
 }

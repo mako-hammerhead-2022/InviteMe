@@ -6,7 +6,10 @@ function getGuests(db = connection) {
   return db('guest').select()
 }
 
-function addGuest(name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number, db = connection) {
+function addGuest(
+  { name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number },
+  db = connection
+) {
   return db('guest').insert({
     name,
     email,

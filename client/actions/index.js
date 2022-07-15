@@ -1,6 +1,7 @@
 export const RECEIVE_GUESTS = 'RECEIVE_GUESTS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
+export const ADD_GUESTS_SUCCESS = 'ADD_GUESTS_SUCCESS'
 
 import {
   getAllGuests,
@@ -21,6 +22,12 @@ export const fetchGuests = () => {
 export const receiveGuests = (guests) => {
   return {
     type: RECEIVE_GUESTS,
+    guests,
+  }
+}
+export const addGuestsSuccess = (guests) => {
+  return {
+    type: ADD_GUESTS_SUCCESS,
     guests,
   }
 }

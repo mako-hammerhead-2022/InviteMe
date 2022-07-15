@@ -44,21 +44,35 @@ router.delete('/', (req, res) => {
 })
 
 //POST add a guest api/v1
-router.post('/', async (req, res) => {
+// router.post('/', async (req, res) => {
+//   const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
+//   try {
+//     const newGuest = await db.addGuest(
+//       name,
+//       email,
+//       plusone,
+//       plusone_Name,
+//       dietary,
+//       rsvp
+//     )
+//     res.status(200).json(newGuest)
+//   } catch (err) {
+//     res.status(400).json({ error: err.message })
+//   }
+// })
+
+router.post('/', (req, res) => {
   const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
-  try {
-    const newGuest = await db.addGuest(
-      name,
-      email,
-      plusone,
-      plusone_Name,
-      dietary,
-      rsvp
-    )
-    res.status(200).json(newGuest)
-  } catch (err) {
-    res.status(400).json({ error: err.message })
-  }
+  db.addGuest({ name, email, plusone, plusone_Name, dietary, rsvp })
+    .then((newId) => {
+      console.log('This is returning from routes', newId)
+      res.json(newId)
+      return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong!' })
+    })
 })
 
 // PATCH guest api/v1
