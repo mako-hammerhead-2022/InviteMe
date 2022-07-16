@@ -45,7 +45,16 @@ router.delete('/', (req, res) => {
 
 //POST add a guest api/v1/guests
 router.post('/', async (req, res) => {
-  const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
+  const {
+    name,
+    email,
+    plusone,
+    plusone_Name,
+    dietary,
+    rsvp,
+    event_id,
+    table_Number,
+  } = req.body
   try {
     const newGuest = await db.addGuest(
       name,
@@ -53,7 +62,9 @@ router.post('/', async (req, res) => {
       plusone,
       plusone_Name,
       dietary,
-      rsvp
+      rsvp,
+      event_id,
+      table_Number
     )
     res.status(200).json(newGuest)
   } catch (err) {
