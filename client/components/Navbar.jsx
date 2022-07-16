@@ -20,8 +20,7 @@ export default function Navbar() {
             <li className="topListItem">ADD GUEST</li>
           </Link>
           {/* <Link to={`/rsvp/${id}`}> */}
-          <Link to="/rsvp/">
-
+          <Link to="/rsvp">
             <li className="topListItem">RSVP</li>
           </Link>
         </ul>

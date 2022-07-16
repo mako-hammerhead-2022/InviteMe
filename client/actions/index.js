@@ -92,8 +92,6 @@ export const updateGuest = (updatedGuest) => {
 
 export function addGuestList(guest) {
   return (dispatch) => {
-    //call apiClient to add book to database
-    //request.post('api/v1/) to create new book
     return addListGuest(guest)
       .then(() => {
         //add to redux -> useSelector()
