@@ -6,7 +6,6 @@ import {
   getAllGuests,
   deleteGuestApi,
   addNewGuest,
-  updateGuestApi,
   updateRsvpGuest,
   getSingleGuest,
 } from '../apis'
@@ -14,18 +13,20 @@ import {
 export const fetchGuests = () => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getAllGuests().then((guests) => dispatch(receiveGuests(guests)))
-    // .then((guests) => console.log(guests))
-    // .catch((err) => dispatch(setError(err.message)))
+    return getAllGuests()
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .then((guests) => console.log(guests))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
 
 export const fetchSingleGuest = (id) => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getSingleGuest(id).then((guest) => dispatch(receiveGuests(guest)))
-    // .then((guests) => console.log(guests))
-    // .catch((err) => dispatch(setError(err.message)))
+    return getSingleGuest(id)
+      .then((guest) => dispatch(receiveGuests(guest)))
+      .then((guests) => console.log(guests))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
 
@@ -36,12 +37,12 @@ export const receiveGuests = (guests) => {
   }
 }
 
-// export const setError = (errMessage) => {
-//   return {
-//     type: SET_ERROR,
-//     errMessage,
-//   }
-// }
+export const setError = (errMessage) => {
+  return {
+    type: SET_ERROR,
+    errMessage,
+  }
+}
 
 export const setLoading = () => {
   return {
@@ -58,25 +59,24 @@ export const setLoading = () => {
 // }
 export const deleteGuest = (id) => {
   return (dispatch) => {
-    return deleteGuestApi(id).then(() => dispatch(fetchGuests()))
-    // .catch((err) => dispatch(setError(err.message)))
+    return deleteGuestApi(id)
+      .then(() => dispatch(fetchGuests()))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
 
 export const addGuest = (newGuest) => {
   return (dispatch) => {
-    return addNewGuest(newGuest).then((guests) =>
-      dispatch(receiveGuests(guests))
-    )
-    // .catch((err) => dispatch(setError(err.message)))
+    return addNewGuest(newGuest)
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
 
 export const updateGuest = (updatedGuest) => {
   return (dispatch) => {
-    return updateRsvpGuest(updatedGuest).then((guests) =>
-      dispatch(receiveGuests(guests))
-    )
-    // .catch((err) => dispatch(setError(err.message)))
+    return updateRsvpGuest(updatedGuest.id, updatedGuest)
+      .then(() => dispatch(fetchGuests()))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }

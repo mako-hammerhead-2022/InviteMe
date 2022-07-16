@@ -36,16 +36,16 @@ export function addNewGuest(newGuest) {
     })
 }
 
-export function updateGuestApi(updatedGuest) {
-  return request
-    .patch('/api/v1/guests/:id')
-    .send(updatedGuest)
-    .set('Accept', 'application/json')
-    .then((res) => res.body)
-    .catch((err) => {
-      console.err(err.message)
-    })
-}
+// export function updateGuestApi(updatedGuest) {
+//   return request
+//     .patch('/api/v1/guests/:id')
+//     .send(updatedGuest)
+//     .set('Accept', 'application/json')
+//     .then((res) => res.body)
+//     .catch((err) => {
+//       console.err(err.message)
+//     })
+// }
 
 //GET /api/v1/rsvp/:id
 export function getSingleGuest(id) {
@@ -53,6 +53,7 @@ export function getSingleGuest(id) {
 }
 
 export function updateRsvpGuest(id, updatedGuest) {
+  console.log('this is id', id)
   return request
     .patch(`/api/v1/rsvp/${id}`)
     .send(updatedGuest)
