@@ -46,7 +46,7 @@ export default function AddGuests() {
           value={guest.email}
           onChange={handleChange}
         />
-        <label htmlFor="plusone_Name">Plus One Name:</label>
+        <label htmlFor="plusone_Name">Name of Plus One:</label>
         <input
           id="plusone_Name"
           type="text"
@@ -62,7 +62,7 @@ export default function AddGuests() {
           value={guest.dietary}
           onChange={handleChange}
         />
-        <label htmlFor="event_id">Event:</label>
+        <label htmlFor="event_id">Event Id:</label>
         <input
           id="event_id"
           type="text"

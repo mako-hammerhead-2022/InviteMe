@@ -40,7 +40,7 @@ export default function Guest({ guestInfo }) {
         <li>Event Id: {guestInfo.event_id}</li>
         <li>Table Number: {guestInfo.table_Number}</li>
       </ul>
-      {/* <button>Add Guest</button> */}
+
       {/* //send id with invite button */}
       <form onSubmit={handleSubmit}>
         <button type="submit">Send Invite</button>
