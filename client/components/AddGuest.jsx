@@ -10,14 +10,14 @@ export default function AddGuest() {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(addGuest(guest))
-    setGuest('')
+    setGuest({})
   }
 
   const onChange = (event) => {
     const { name, value } = event.target
     setGuest((prevState) => ({
-      ...prevState, // shallow copy all previous state
-      [name]: value, // update specific key/value
+      ...prevState,
+      [name]: value,
     }))
   }
 
@@ -43,6 +43,7 @@ export default function AddGuest() {
           onChange={onChange}
         />{' '}
         <br />
+        <p>Are you coming?</p>
         <input type="radio" id="yes" name="rsvp" value={guest.true} />
         <label htmlFor="yes">YEAAA</label>
         <input type="radio" id="no" name="rsvp" value={guest.false} />
@@ -50,16 +51,27 @@ export default function AddGuest() {
         <p>
           <label htmlFor="plusone">Would you like to bring a plus one?</label>
         </p>
-        {/* <select name="plusone" value={guest.plusone} onChange={onChange}>
+        <select name="plusone" value={guest.plusone} onChange={onChange}>
           <option name="plusone" value="false">
             No, I fly solo.
           </option>
           <option name="plusone" value="true">
             Yes, I can't be alone for 5 minutes.
           </option>
-        </select> */}
+        </select>
         <p>
           <label htmlFor="plusone_Name">Full Name of Your Plus One</label>
+        </p>
+        <input
+          placeholder={guest.plusone_Name}
+          id="plusone_Name"
+          type="text"
+          name="plusone_Name"
+          value={guest.plusone_Name}
+          onChange={onChange}
+        />
+        <p>
+          <label htmlFor="dietary">Dietary Restrictions</label>
         </p>
         <input
           placeholder={guest.dietary}
@@ -67,6 +79,28 @@ export default function AddGuest() {
           type="text"
           name="dietary"
           value={guest.dietary}
+          onChange={onChange}
+        />{' '}
+        <br />
+        <p>
+          <label htmlFor="eventId">Event ID: </label>
+        </p>
+        <input
+          id="eventId"
+          type="number"
+          name="eventId"
+          value={guest.event_id}
+          onChange={onChange}
+        />{' '}
+        <br />
+        <p>
+          <label htmlFor="tableNumber">Table Number: </label>
+        </p>
+        <input
+          id="tableNumber"
+          type="number"
+          name="tableNumber"
+          value={guest.table_Number}
           onChange={onChange}
         />{' '}
         <br />
