@@ -53,7 +53,6 @@ export function getSingleGuest(id) {
 }
 
 export function updateRsvpGuest(id, updatedGuest) {
-  console.log('this is id', id)
   return request
     .patch(`/api/v1/rsvp/${id}`)
     .send(updatedGuest)
