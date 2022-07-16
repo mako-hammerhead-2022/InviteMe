@@ -9,8 +9,8 @@ export default function RSVPForm() {
   const initialState = {
     name: '',
     email: '',
-    rsvp: '',
-    plusone: '',
+    rsvp: '1',
+    plusone: '0',
     plusone_Name: '',
     dietary: '',
     event_id: '',
@@ -86,12 +86,21 @@ export default function RSVPForm() {
           value={guestData.email}
           onChange={(evt) => handleChange(evt)}
         />
-        <p>Are you coming?</p>
-        <input type="radio" id="yes" name="rsvp" value={guestData.true} />
-        <label htmlFor="yes">YEAAA</label>
-        <br></br>
-        <input type="radio" id="no" name="rsvp" value={guestData.false} />
-        <label htmlFor="no">NAAAH</label>
+        <p>
+          <label htmlFor="rsvp">Are you coming?</label>
+        </p>
+        <select
+          name="rsvp"
+          value={guestData.rsvp}
+          onChange={(evt) => handleChange(evt)}
+        >
+          <option name="rsvp" value="1">
+            Yeeea!
+          </option>
+          <option name="rsvp" value="0">
+            Yeah, but Naaah
+          </option>
+        </select>
         <p>
           <label htmlFor="plusone">Would you like to bring a plus one?</label>
         </p>
@@ -100,10 +109,10 @@ export default function RSVPForm() {
           value={guestData.plusone}
           onChange={(evt) => handleChange(evt)}
         >
-          <option name="plusone" value="false">
+          <option name="plusone" value="0">
             No, I fly solo.
           </option>
-          <option name="plusone" value="true">
+          <option name="plusone" value="1">
             Yes, I can't be alone for 5 minutes.
           </option>
         </select>
