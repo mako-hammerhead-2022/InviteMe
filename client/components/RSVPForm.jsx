@@ -7,14 +7,14 @@ import { getSingleGuest } from '../apis'
 export default function RSVPForm() {
   const dispatch = useDispatch()
   const initialState = {
-    // name: '',
-    // email: '',
-    // rsvp: '',
-    // plusone: '',
-    // plusone_Name: '',
-    // dietary: '',
-    // event_id: '',
-    // tableNumber: '',
+    name: '',
+    email: '',
+    rsvp: '',
+    plusone: '',
+    plusone_Name: '',
+    dietary: '',
+    event_id: '',
+    tableNumber: '',
   }
   const [guestData, setGuestData] = useState(initialState)
   const location = useLocation()
@@ -49,7 +49,7 @@ export default function RSVPForm() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    dispatch(updateGuest(guestData))
+    dispatch(updateGuest({ id, ...guestData }))
     setGuestData(initialState)
   }
 
@@ -61,6 +61,8 @@ export default function RSVPForm() {
     setGuestData(prev)
     console.log(value)
   }
+
+  console.log(guestData)
 
   return (
     <div className="rsvpform">
@@ -101,7 +103,7 @@ export default function RSVPForm() {
         </p>
         <select
           name="plusone"
-          value={guestData.plousone}
+          value={guestData.plusone}
           onChange={(evt) => handleChange(evt)}
         >
           <option name="plusone" value="false">
