@@ -16,9 +16,9 @@ export default function GuestList() {
   return (
     <div>
       {guests
-        .sort((a, b) => a.name.localeCompare(b.name))
+        // .sort((a, b) => a.name.localeCompare(b.name))
         .map((guest) => {
-          return <Guest key={guest.id} guestInfo={guest} />
+          return <Guest key={guest.name} guestInfo={guest} />
         })}
     </div>
   )
