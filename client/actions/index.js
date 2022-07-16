@@ -7,12 +7,23 @@ import {
   deleteGuestApi,
   addNewGuest,
   updateGuestApi,
+  updateRsvpGuest,
+  getSingleGuest,
 } from '../apis'
 
 export const fetchGuests = () => {
   return (dispatch) => {
     dispatch(setLoading())
     return getAllGuests().then((guests) => dispatch(receiveGuests(guests)))
+    // .then((guests) => console.log(guests))
+    // .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+export const fetchSingleGuest = (id) => {
+  return (dispatch) => {
+    dispatch(setLoading())
+    return getSingleGuest(id).then((guest) => dispatch(receiveGuests(guest)))
     // .then((guests) => console.log(guests))
     // .catch((err) => dispatch(setError(err.message)))
   }
@@ -63,7 +74,7 @@ export const addGuest = (newGuest) => {
 
 export const updateGuest = (updatedGuest) => {
   return (dispatch) => {
-    return updateGuestApi(updatedGuest).then((guests) =>
+    return updateRsvpGuest(updatedGuest).then((guests) =>
       dispatch(receiveGuests(guests))
     )
     // .catch((err) => dispatch(setError(err.message)))

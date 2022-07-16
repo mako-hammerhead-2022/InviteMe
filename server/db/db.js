@@ -6,7 +6,17 @@ function getGuests(db = connection) {
   return db('guest').select()
 }
 
-function addGuest(name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number, db = connection) {
+function addGuest(
+  name,
+  email,
+  plusone,
+  plusone_Name,
+  dietary,
+  rsvp,
+  event_id,
+  table_Number,
+  db = connection
+) {
   return db('guest').insert({
     name,
     email,
@@ -24,17 +34,38 @@ function deleteGuest(id, db = connection) {
   // .then(() => getGuests())
 }
 
-// function guest(id, db = connection) {
-//   return db('guest').select().where('id', id)
+// function patchGuest(id, updatedGuest, db = connection) {
+//   return db('guest')
+//     .update(updatedGuest)
+//     .where('id', id)
+//     .then(() => findGuestById(id))
 // }
 
-function patchGuest(id, updatedGuest, db = connection) {
-  return db('guest').update(updatedGuest).where('id', id)
+function updateGuest(
+  id,
+  { name, email, plusone, plusone_Name, dietary, rsvp, db = connection }
+) {
+  return db('guest')
+    .update({
+      name,
+      email,
+      plusone,
+      plusone_Name,
+      dietary,
+      rsvp,
+    })
+    .where('id', id)
+    .then(() => findGuestById(id))
+}
+
+function findGuestById(id, db = connection) {
+  return db('guest').select().where('id', id).first()
 }
 
 module.exports = {
   addGuest,
   getGuests,
   deleteGuest,
-  patchGuest,
+  updateGuest,
+  findGuestById,
 }

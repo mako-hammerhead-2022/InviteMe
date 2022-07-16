@@ -46,3 +46,19 @@ export function updateGuestApi(updatedGuest) {
       console.err(err.message)
     })
 }
+
+//GET /api/v1/rsvp/:id
+export function getSingleGuest(id) {
+  return request.get(`/api/v1/rsvp/${id}`).then((res) => res.body)
+}
+
+export function updateRsvpGuest(id, updatedGuest) {
+  return request
+    .patch(`/api/v1/rsvp/${id}`)
+    .send(updatedGuest)
+    .set('Accept', 'application/json')
+    .then((res) => res.body)
+    .catch((err) => {
+      console.err(err.message)
+    })
+}

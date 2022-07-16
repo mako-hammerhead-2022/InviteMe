@@ -1,26 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateGuest } from '../actions'
+import { useLocation } from 'react-router'
+import { getSingleGuest } from '../apis'
 
 export default function RSVPForm() {
   const dispatch = useDispatch()
   const initialState = {
-    name: '',
-    email: '',
-    rsvp: '',
-    plusone: '',
-    plusone_Name: '',
-    dietary: '',
-    event_id: '',
-    tableNumber: '',
+    // name: '',
+    // email: '',
+    // rsvp: '',
+    // plusone: '',
+    // plusone_Name: '',
+    // dietary: '',
+    // event_id: '',
+    // tableNumber: '',
   }
   const [guestData, setGuestData] = useState(initialState)
+  const location = useLocation()
+  const id = location.pathname.split('/')[2]
+
+  // console.log(id)
 
   //api function fetches data from db
   //or passing via reducts
 
   //useeffect to call single user db api
   //useparams to get id
+
+  // fetch single guest by id
+
+  const [guest, setGuest] = useState({})
+
+  const getGuestById = async () => {
+    const res = await getSingleGuest(id)
+    setGuest(res)
+  }
+
+  useEffect(() => {
+    getGuestById(id)
+  }, [])
+
+  // const guest = {
+  //   id,
+  //   name: 'Ayoung',
+  //   email: 'ayoungleeh@gmail.com',
+  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -39,6 +64,7 @@ export default function RSVPForm() {
 
   return (
     <div className="rsvpform">
+      {}
       <h1>We are pleased to invite you to our wedding!</h1>
       <h2>Please confirm your attendance below:</h2>
       <form onSubmit={handleSubmit}>
@@ -46,7 +72,7 @@ export default function RSVPForm() {
           <label htmlFor="guestName">Your Full Name</label>
         </p>
         <input
-          placeholder="i.e. Jackie Chan"
+          placeholder={guest.name}
           id="name"
           type="text"
           name="name"
@@ -57,7 +83,7 @@ export default function RSVPForm() {
           <label htmlFor="guestEmail">Your Email Address</label>
         </p>
         <input
-          placeholder="i.e. jackie.chan@gmail.com"
+          placeholder={guest.email}
           id="email"
           type="text"
           name="email"
@@ -89,7 +115,7 @@ export default function RSVPForm() {
           <label htmlFor="plusone_Name">Full Name of Your Plus One</label>
         </p>
         <input
-          placeholder="i.e. Reese Witherspoon"
+          placeholder={guest.plusone_Name}
           id="plusone_Name"
           type="text"
           name="plusone_Name"
@@ -100,7 +126,7 @@ export default function RSVPForm() {
           <label htmlFor="dietary">Dietary Restrictions</label>
         </p>
         <input
-          placeholder="i.e. I only eat meat"
+          placeholder={guest.dietary}
           id="dietary"
           type="text"
           name="dietary"
