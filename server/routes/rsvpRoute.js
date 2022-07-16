@@ -2,7 +2,7 @@ const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
 
-//GET all guests /api/v1
+//GET all guests /api/v1/rsvp
 router.get('/', (req, res) => {
   db.getGuests()
     .then((guests) => {
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     })
 })
 
-//delete guest/ api/v1/guests
+//delete guest/ api/v1/rsvp
 router.delete('/', (req, res) => {
   const { id } = req.body
 
@@ -29,7 +29,7 @@ router.delete('/', (req, res) => {
     })
 })
 
-//POST add a guest api/v1
+//POST add a guest api/v1/rsvp
 router.post('/', async (req, res) => {
   const { name, email, plusone, plusone_Name, dietary, rsvp } = req.body
   try {
@@ -62,20 +62,6 @@ router.get('/:id', (req, res) => {
 })
 
 //UPDATE single guest /api/v1/rsvp/:id
-// router.patch('/:id', (req, res) => {
-//   const id = Number(req.body.params)
-//   const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
-//   db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
-//     .then((updatedGuest) => {
-//       res.json(updatedGuest)
-//       return null
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//       res.status(500).json({ message: 'Something went wrong' })
-//     })
-// })
-
 router.patch('/:id', (req, res) => {
   const id = req.params.id
   const guest = req.body
@@ -90,5 +76,20 @@ router.patch('/:id', (req, res) => {
       res.status(500).send('Something went wrong!')
     })
 })
+
+//UPDATE single guest /api/v1/rsvp/:id
+// router.patch('/:id', (req, res) => {
+//   const id = Number(req.body.params)
+//   const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
+//   db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
+//     .then((updatedGuest) => {
+//       res.json(updatedGuest)
+//       return null
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//       res.status(500).json({ message: 'Something went wrong' })
+//     })
+// })
 
 module.exports = router
