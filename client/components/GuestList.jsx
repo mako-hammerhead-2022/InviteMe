@@ -20,9 +20,6 @@ export default function GuestList() {
         .map((guest) => {
           return <Guest key={guest.id} guestInfo={guest} />
         })}
-      {/* {guests.map((guest) => {
-        return <Guest key={guest.id} guestInfo={guest} />
-      })} */}
     </div>
   )
 }
