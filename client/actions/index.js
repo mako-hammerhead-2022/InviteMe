@@ -60,12 +60,13 @@ export const deleteGuest = (id) => {
 }
 
 export const addGuest = (newGuest) => {
+  console.log('Returning from actions', newGuest)
   return (dispatch) => {
     return addNewGuest(newGuest).then((guests) =>
       dispatch(receiveGuests(guests))
     )
-    // .catch((err) => dispatch(setError(err.message)))
   }
+  // .catch((err) => dispatch(setError(err.message)))
 }
 
 export const updateGuest = (updatedGuest) => {

@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 import GuestList from './GuestList'
 import SeatingPlan from './SeatingPlan'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import AddGuests from './AddGuests'
 
 function App() {
   return (

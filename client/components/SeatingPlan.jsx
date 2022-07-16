@@ -109,7 +109,7 @@ function App() {
                           return (
                             <Draggable
                               key={item.id}
-                              draggableId={item.id}
+                              draggableId={item.id.toString()}
                               index={index}
                             >
                               {(provided, snapshot) => {
