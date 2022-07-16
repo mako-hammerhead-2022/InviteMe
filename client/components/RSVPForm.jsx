@@ -39,12 +39,6 @@ export default function RSVPForm() {
     getGuestById(id)
   }, [])
 
-  // const guest = {
-  //   id,
-  //   name: 'Ayoung',
-  //   email: 'ayoungleeh@gmail.com',
-  // }
-
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(updateGuest({ id, ...guestData }))
