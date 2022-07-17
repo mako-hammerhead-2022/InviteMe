@@ -4,6 +4,8 @@ import Navbar from './Navbar'
 import GuestList from './GuestList'
 import SeatingPlan from './SeatingPlan'
 import LoginPage from './LoginPage'
+import NoMatch from './NoMatch'
+import MainLayout from './MainLayout.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -11,12 +13,15 @@ function App() {
     <>
       <div className="app">
         <Router>
-          <Navbar />
+          {/* <Navbar /> */}
           <Routes>
-            <Route path="/" element={<GuestList />} />
-            <Route path="/rsvp/:id" element={<RSVPForm />} />
-            <Route path="/seatingplan" element={<SeatingPlan />} />
+            <Route element={<MainLayout />}>
+              <Route exact path="/" element={<GuestList />} />
+              <Route exact path="/seatingplan" element={<SeatingPlan />} />
+            </Route>
+            <Route exact path="/rsvp/:id" element={<RSVPForm />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </Router>
       </div>
