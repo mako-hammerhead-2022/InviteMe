@@ -3,7 +3,7 @@ import Guest from './Guest'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchGuests } from '../actions'
+import { fetchGuests, setGuest } from '../actions'
 
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)
@@ -16,7 +16,7 @@ export default function GuestList() {
   return (
     <div>
       {guests
-        // .sort((a, b) => a.name.localeCompare(b.name))
+        .sort((a, b) => a.name.localeCompare(b.name))
         .map((guest) => {
           return <Guest key={guest.name} guestInfo={guest} />
         })}
