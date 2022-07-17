@@ -1,78 +1,44 @@
-//const routes = require('./guestRoute')
-
-const knex = require('knex')
-const testConfig = require('../db/knexfile').test // Test Database
-const testRoutes = knex(testConfig)
+const request = require('supertest')
 const db = require('../db/db')
+const server = require('../server')
 
-beforeAll(() => {
-  return testRoutes.migrate.latest()
-})
+jest.mock('../db/db.js')
 
-beforeEach(async () => {
-  return testRoutes.seed.run()
-})
-
-afterAll(() => {
-  return testRoutes.destroy()
-})
-
-describe('test routes', () => {
-  it('tests the router.get', () => {
+const guestMock = [
+  {
+    id: '10',
+    name: 'Ben',
+    email: 'ben@gmail.com',
+    plusone: true,
+    plusone_Name: 'Tom',
+    dietary: 'N/A',
+    rsvp: true,
+    event_id: 1,
+    table_Number: 2,
+  },
+  {
+    id: '9',
+    name: 'bob',
+    email: 'bobbie@hotmail.com',
+    plusone: true,
+    plusone_Name: 'ben',
+    dietary: 'fish',
+    rsvp: false,
+    event_id: 1,
+    table_Number: 2,
+  },
+]
+// using mock to test so we don't need to update tests everytime db changes.
+describe('GET /api/v1/guests', () => {
+  test('mock route data', () => {
     expect.assertions(2)
-    return db.getGuests(testRoutes).then((result) => {
-      expect(result[0].name).toBe('Ayoung')
-      expect(result).toHaveLength(5)
-    })
-  })
-  it('tests the router.delete', () => {
-    expect.assertions(2)
-    return db
-      .deleteGuest(1, testRoutes)
-      .then(() => {
-        return db.getGuests(testRoutes)
-      })
-      .then((result) => {
-        expect(result[0].name).toBe('Beyond')
-        expect(result).toHaveLength(4)
-      })
-  })
-  it('tests the router.post', () => {
-    const addGuest = [
-      'Benjamin',
-      'ben@devacademy.co.nz',
-      true,
-      'Savannah',
-      'Dairy products',
-      true,
-      6,
-      7,
-    ]
-    expect.assertions(2)
-    return db
-      .addGuest(...addGuest, testRoutes)
-      .then(() => {
-        return db.getGuests(testRoutes)
-      })
-      .then((result) => {
-        expect(result[5].name).toBe('Benjamin')
-        expect(result).toHaveLength(6)
-      })
-  })
-  it('test the updateGuest', () => {
-    expect.assertions(2)
-    const patchGuest = {
-      name: 'Angela',
-    }
-    return db
-      .patchGuest(3, patchGuest, testRoutes) // 1: update data user name: 'Angela
-      .then(() => {
-        return db.getGuests(testRoutes) // 2: receive all guests
-      })
-      .then((result) => {
-        // 3: access the returned guests
-        expect(result[2].name).toBe('Angela')
-        expect(result).toHaveLength(5)
+    db.getGuests.mockImplementation(() => Promise.resolve(guestMock))
+    return request(server)
+      .get('/api/v1/guests')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(guestMock) // wanting to return my fake data here.. toBeStrickEqual, wants it to be the identicale 
+        expect(res.body).toHaveLength(2)
       })
   })
 })

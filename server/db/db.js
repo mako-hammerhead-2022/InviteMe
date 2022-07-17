@@ -7,6 +7,7 @@ function getGuests(db = connection) {
 }
 
 function addGuest(
+
   { name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number },
   db = connection
 ) {
@@ -22,6 +23,7 @@ function addGuest(
       table_Number,
     })
     .join('event', 'event.id', 'guests.event_id as guests.eventId')
+
 }
 
 function deleteGuest(id, db = connection) {
@@ -29,17 +31,38 @@ function deleteGuest(id, db = connection) {
   // .then(() => getGuests())
 }
 
-// function guest(id, db = connection) {
-//   return db('guest').select().where('id', id)
+// function patchGuest(id, updatedGuest, db = connection) {
+//   return db('guest')
+//     .update(updatedGuest)
+//     .where('id', id)
+//     .then(() => findGuestById(id))
 // }
 
-function patchGuest(id, updatedGuest, db = connection) {
-  return db('guest').update(updatedGuest).where('id', id)
+function updateGuest(
+  id,
+  { name, email, plusone, plusone_Name, dietary, rsvp, db = connection }
+) {
+  return db('guest')
+    .update({
+      name,
+      email,
+      plusone,
+      plusone_Name,
+      dietary,
+      rsvp,
+    })
+    .where('id', id)
+    .then(() => findGuestById(id))
+}
+
+function findGuestById(id, db = connection) {
+  return db('guest').select().where('id', id).first()
 }
 
 module.exports = {
   addGuest,
   getGuests,
   deleteGuest,
-  patchGuest,
+  updateGuest,
+  findGuestById,
 }

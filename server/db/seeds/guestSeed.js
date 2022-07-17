@@ -1,7 +1,6 @@
 // const uuid = require('uuid')
 
 exports.seed = function (knex) {
-
   return knex('guest')
     .del()
     .then(() =>
@@ -10,10 +9,10 @@ exports.seed = function (knex) {
           id: '1',
           name: 'Ayoung',
           email: 'ayoungleeh@gmail.com',
-          plusone: true,
+          plusone: 1,
           plusone_Name: 'Haru',
           dietary: 'none',
-          rsvp: true,
+          rsvp: 1,
           event_id: 1,
           table_Number: 1,
         },
@@ -21,10 +20,10 @@ exports.seed = function (knex) {
           id: '2',
           name: 'Beyond',
           email: 'allstar_beyond@hotmail.com',
-          plusone: true,
+          plusone: 1,
           plusone_Name: 'Christina',
           dietary: 'fish',
-          rsvp: false,
+          rsvp: 1,
           event_id: 1,
           table_Number: 1,
         },
@@ -32,10 +31,10 @@ exports.seed = function (knex) {
           id: '3',
           name: 'Angela',
           email: 'angela_yk@hotmail.com',
-          plusone: false,
+          plusone: 0,
           plusone_Name: '',
           dietary: 'dairy',
-          rsvp: false,
+          rsvp: 0,
           event_id: 1,
           table_Number: 2,
         },
@@ -43,10 +42,10 @@ exports.seed = function (knex) {
           id: '4',
           name: 'David',
           email: 'davehu0623@gmail.com',
-          plusone: false,
+          plusone: 0,
           plusone_Name: '',
           dietary: 'pesca-pescatarian',
-          rsvp: true,
+          rsvp: 1,
           event_id: 2,
           table_Number: 3,
         },
@@ -54,14 +53,13 @@ exports.seed = function (knex) {
           id: '5',
           name: 'Ngairo',
           email: 'ngairotap@gmail.com',
-          plusone: false,
+          plusone: 0,
           plusone_Name: '',
           dietary: 'none',
-          rsvp: false,
+          rsvp: 0,
           event_id: 1,
           table_Number: 1,
         },
       ])
     )
-
 }

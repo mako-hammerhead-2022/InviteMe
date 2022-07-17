@@ -71,9 +71,12 @@
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "supertest": "^6.2.2",
+    "supertest": "^6.2.4",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "prettier": {
     "semi": false,

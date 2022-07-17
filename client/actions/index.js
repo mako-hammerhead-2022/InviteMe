@@ -1,21 +1,52 @@
 export const RECEIVE_GUESTS = 'RECEIVE_GUESTS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
+
 export const ADD_GUESTS_SUCCESS = 'ADD_GUESTS_SUCCESS'
+
+export const ADD_GUEST = 'ADD_GUEST'
+export const SET_GUEST = 'SET_GUEST'
+
 
 import {
   getAllGuests,
   deleteGuestApi,
   addNewGuest,
-  updateGuestApi,
+  updateRsvpGuest,
+  getSingleGuest,
 } from '../apis'
 
 export const fetchGuests = () => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getAllGuests().then((guests) => dispatch(receiveGuests(guests)))
-    // .then((guests) => console.log(guests))
-    // .catch((err) => dispatch(setError(err.message)))
+    return getAllGuests()
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .then((guests) => console.log(guests))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+export const fetchSingleGuest = (id) => {
+  return (dispatch) => {
+    dispatch(setLoading())
+    return getSingleGuest(id)
+      .then((guest) => dispatch(receiveGuests(guest)))
+      .then((guests) => console.log(guests))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+export function addListGuest(guest) {
+  return {
+    type: ADD_GUEST,
+    payload: guest,
+  }
+}
+
+export function setGuest(guest) {
+  return {
+    type: SET_GUEST,
+    payload: guest,
   }
 }
 
@@ -32,12 +63,12 @@ export const addGuestsSuccess = (guests) => {
   }
 }
 
-// export const setError = (errMessage) => {
-//   return {
-//     type: SET_ERROR,
-//     errMessage,
-//   }
-// }
+export const setError = (errMessage) => {
+  return {
+    type: SET_ERROR,
+    errMessage,
+  }
+}
 
 export const setLoading = () => {
   return {
@@ -45,35 +76,43 @@ export const setLoading = () => {
   }
 }
 
-// export const DEL_GUEST = 'DEL_GUEST'
-// export function deleteGuestAction(guest) {
-//   return {
-//     type: DEL_GUEST,
-//     payload: guest,
-//   }
-// }
 export const deleteGuest = (id) => {
   return (dispatch) => {
-    return deleteGuestApi(id).then(() => dispatch(fetchGuests()))
-    // .catch((err) => dispatch(setError(err.message)))
+    return deleteGuestApi(id)
+      .then(() => dispatch(fetchGuests()))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
 
 export const addGuest = (newGuest) => {
   console.log('Returning from actions', newGuest)
   return (dispatch) => {
-    return addNewGuest(newGuest).then((guests) =>
-      dispatch(receiveGuests(guests))
-    )
+
+    return addNewGuest(newGuest)
+      .then((guests) => dispatch(receiveGuests(guests)))
+      .catch((err) => dispatch(setError(err.message)))
+
   }
-  // .catch((err) => dispatch(setError(err.message)))
+
 }
 
 export const updateGuest = (updatedGuest) => {
   return (dispatch) => {
-    return updateGuestApi(updatedGuest).then((guests) =>
-      dispatch(receiveGuests(guests))
-    )
-    // .catch((err) => dispatch(setError(err.message)))
+    return updateRsvpGuest(updatedGuest.id, updatedGuest)
+      .then(() => dispatch(fetchGuests()))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+export function addGuestList(guest) {
+  return (dispatch) => {
+    return addListGuest(guest)
+      .then(() => {
+        //add to redux -> useSelector()
+        dispatch(addNewGuest(guest))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
