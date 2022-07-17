@@ -1,5 +1,5 @@
 import nock from 'nock'
-import { addNewGuest, getAllGuests } from './index'
+import { addNewGuest, getAllGuests, getSingleGuest } from './index'
 import { guestsArray } from '../../tests/fake-data'
 
 describe('getAllGuests', () => {
@@ -58,9 +58,32 @@ describe('addNewGuests', () => {
   })
 })
 
-// describe('sendEmail')
-//
-//
+describe('getSingleGuest', () => {
+  const id = guestsArray[0].id
+  const scope = nock('http://localhost')
+    .get(`/api/v1/rsvp/${id}`)
+    .reply(200, guestsArray[0])
+
+  test('returns guest with id = 1', () => {
+    expect.assertions(4)
+    return getSingleGuest(id).then((res) => {
+      expect(res.id).toBe(id)
+      expect(res.name).toBe(guestsArray[0].name)
+      expect(res.email).toBe(guestsArray[0].email)
+      expect(scope.isDone()).toBe(true)
+      return null
+    })
+  })
+})
+
+//check status 200
+//check correct response being sent
+// describe('sendEmail', () => {
+//   const scope = nock()
+// })
+
+//check status 200
+//check correct response being sent
 // describe('deleteGuestApi', () => {
 //   const scope = nock('http://localhost')
 //     .get('/api/v1/guests/')
