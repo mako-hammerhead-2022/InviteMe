@@ -14,7 +14,7 @@ const guestMock = [
     dietary: 'N/A',
     rsvp: true,
     event_id: 1,
-    table_Number: 2,
+    groupNumber: 2,
   },
   {
     id: '9',
@@ -25,7 +25,7 @@ const guestMock = [
     dietary: 'fish',
     rsvp: false,
     event_id: 1,
-    table_Number: 2,
+    groupNumber: 2,
   },
 ]
 // using mock to test so we don't need to update tests everytime db changes.
@@ -37,7 +37,7 @@ describe('GET /api/v1/guests', () => {
       .get('/api/v1/guests')
       .expect(200)
       .then((res) => {
-        expect(res.body).toStrictEqual(guestMock) // wanting to return my fake data here.. toBeStrickEqual, wants it to be the identicale 
+        expect(res.body).toStrictEqual(guestMock) // wanting to return my fake data here.. toBeStrickEqual, wants it to be the identicale
         expect(res.body).toHaveLength(2)
       })
   })

@@ -8,7 +8,7 @@ exports.up = function (knex) {
     table.string('dietary')
     table.bit('rsvp')
     table.integer('event_id')
-    table.integer('table_Number')
+    table.integer('groupNumber')
   })
 }
 
