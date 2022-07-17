@@ -29,7 +29,7 @@ export default function AddGuests() {
     e.preventDefault()
     // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
-    setGuest('')
+    setGuest(initialState)
     dispatch(fetchGuests())
   }
 
