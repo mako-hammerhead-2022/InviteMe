@@ -16,10 +16,12 @@ import {
 export const fetchGuests = () => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getAllGuests()
-      .then((guests) => dispatch(receiveGuests(guests)))
-      .then((guests) => console.log(guests))
-      .catch((err) => dispatch(setError(err.message)))
+    return (
+      getAllGuests()
+        .then((guests) => dispatch(receiveGuests(guests)))
+        // .then((guests) => console.log(guests))
+        .catch((err) => dispatch(setError(err.message)))
+    )
   }
 }
 
