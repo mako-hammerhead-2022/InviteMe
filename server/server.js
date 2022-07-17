@@ -15,4 +15,5 @@ server.use('/api/v1/rsvp', rsvpRoute)
 server.get('*', (req, res) => {
   res.sendFile(path.resolve('server/public/index.html'))
 })
+
 module.exports = server

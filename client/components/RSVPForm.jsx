@@ -43,14 +43,13 @@ export default function RSVPForm() {
     let prev = { ...guestData }
     prev[key] = value
     setGuestData(prev)
-    console.log(value)
+    // console.log(value)
   }
 
-  console.log(guestData)
-
+  // console.log(guestData)
+  // const { isLoading, error } = useAuth0()
   return (
     <div className="rsvpform">
-      {}
       <h1>We are pleased to invite you to our wedding!</h1>
       <h2>Please confirm your attendance below:</h2>
       <form onSubmit={handleSubmit}>

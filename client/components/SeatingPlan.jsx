@@ -52,7 +52,7 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function App() {
   const guests = useSelector((state) => state.guests)
-  console.log(guests)
+  // console.log(guests)
   const columnsFromBackend = {
     ['1']: {
       name: 'Guests',

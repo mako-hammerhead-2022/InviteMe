@@ -8,8 +8,6 @@ export default function Guest({ guestInfo }) {
   // console.log(guestInfo)
   const dispatch = useDispatch()
 
-  // const guests = useSelector((state) => state.guests)
-
   const handleSubmit = (e) => {
     // [{email: '', name: '', id: ''}]
     // const recipients = guests.map((guest) => ({
@@ -19,7 +17,7 @@ export default function Guest({ guestInfo }) {
     const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
     sendEmail(recipient)
-    console.log('button clicked')
+    // console.log('button clicked')
   }
 
   const handleDelete = (e) => {

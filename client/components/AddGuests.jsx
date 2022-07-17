@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchGuests, addGuest } from '../actions'
 
-// for merge
-
 export default function AddGuests() {
   const initialState = {
     name: '',
@@ -29,9 +27,9 @@ export default function AddGuests() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('Submit btn was clicked!!')
+    // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
-    setGuest('')
+    setGuest(initialState)
     dispatch(fetchGuests())
   }
 
