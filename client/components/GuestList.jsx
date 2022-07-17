@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Guest from './Guest'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchGuests, setGuest } from '../actions'
+import { fetchGuests } from '../actions'
 
 import AddGuests from './AddGuests'
 

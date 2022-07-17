@@ -20,16 +20,6 @@ export default function RSVPForm() {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
 
-  // console.log(id)
-
-  //api function fetches data from db
-  //or passing via reducts
-
-  //useeffect to call single user db api
-  //useparams to get id
-
-  // fetch single guest by id
-
   const [guest, setGuest] = useState({})
 
   const getGuestById = async () => {
@@ -57,10 +47,9 @@ export default function RSVPForm() {
   }
 
   console.log(guestData)
-
+  // const { isLoading, error } = useAuth0()
   return (
     <div className="rsvpform">
-      {}
       <h1>We are pleased to invite you to our wedding!</h1>
       <h2>Please confirm your attendance below:</h2>
       <form onSubmit={handleSubmit}>
