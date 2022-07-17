@@ -29,6 +29,7 @@ export default function Guest({ guestInfo }) {
   }
 
   return (
+
     <>
       <div>
         <div>
@@ -50,5 +51,6 @@ export default function Guest({ guestInfo }) {
         <button onClick={handleDelete}>Delete Guest</button>
       </div>
     </>
+
   )
 }

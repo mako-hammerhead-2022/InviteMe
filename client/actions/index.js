@@ -1,8 +1,12 @@
 export const RECEIVE_GUESTS = 'RECEIVE_GUESTS'
 export const SET_ERROR = 'SET_ERROR'
 export const SET_LOADING = 'SET_LOADING'
+
+export const ADD_GUESTS_SUCCESS = 'ADD_GUESTS_SUCCESS'
+
 export const ADD_GUEST = 'ADD_GUEST'
 export const SET_GUEST = 'SET_GUEST'
+
 
 import {
   getAllGuests,
@@ -52,6 +56,12 @@ export const receiveGuests = (guests) => {
     guests,
   }
 }
+export const addGuestsSuccess = (guests) => {
+  return {
+    type: ADD_GUESTS_SUCCESS,
+    guests,
+  }
+}
 
 export const setError = (errMessage) => {
   return {
@@ -75,11 +85,15 @@ export const deleteGuest = (id) => {
 }
 
 export const addGuest = (newGuest) => {
+  console.log('Returning from actions', newGuest)
   return (dispatch) => {
+
     return addNewGuest(newGuest)
       .then((guests) => dispatch(receiveGuests(guests)))
       .catch((err) => dispatch(setError(err.message)))
+
   }
+
 }
 
 export const updateGuest = (updatedGuest) => {
