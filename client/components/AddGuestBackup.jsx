@@ -100,7 +100,7 @@ export default function AddGuest() {
           id="tableNumber"
           type="number"
           name="tableNumber"
-          value={guest.table_Number}
+          value={guest.groupNumber}
           onChange={onChange}
         />{' '}
         <br />
