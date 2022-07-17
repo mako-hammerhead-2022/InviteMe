@@ -16,11 +16,11 @@ export default function Navbar() {
             <li className="topListItem">SEATING PLAN</li>
           </Link>
 
-          <Link to="/addguest">
+          {/* <Link to="/addguest">
             <li className="topListItem">ADD GUEST</li>
-          </Link>
+          </Link> */}
           {/* <Link to={`/rsvp/${id}`}> */}
-          <Link to="/rsvp">
+          <Link to="/rsvp/1">
             <li className="topListItem">RSVP</li>
           </Link>
         </ul>
