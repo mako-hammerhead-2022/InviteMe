@@ -43,7 +43,9 @@ router.delete('/', (req, res) => {
     })
 })
 
+
 //POST add a guest api/v1/guests
+
 router.post('/', (req, res) => {
   const {
     name,
@@ -53,7 +55,9 @@ router.post('/', (req, res) => {
     dietary,
     rsvp,
     event_id,
-    table_Number,
+
+    groupNumber,
+
   } = req.body
   db.addGuest({
     name,
@@ -63,7 +67,9 @@ router.post('/', (req, res) => {
     dietary,
     rsvp,
     event_id,
-    table_Number,
+
+    groupNumber,
+
   })
     .then((newId) => {
       console.log('This is returning from routes', newId)

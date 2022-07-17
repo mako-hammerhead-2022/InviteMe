@@ -38,7 +38,7 @@ export default function Guest({ guestInfo }) {
             <li>Dietary: {guestInfo.dietary}</li>
             <li>RSVP: {guestInfo.rsvp}</li>
             <li>Event Id: {guestInfo.event_id}</li>
-            <li>Table Number: {guestInfo.table_Number}</li>
+            <li>Group Number: {guestInfo.groupNumber}</li>
           </ul>
         </div>
         {/* //send id with invite button */}

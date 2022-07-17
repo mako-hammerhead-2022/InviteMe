@@ -3,7 +3,17 @@ import { useDispatch } from 'react-redux'
 import { fetchGuests, addGuest } from '../actions'
 
 export default function AddGuests() {
-  const [guest, setGuest] = useState('')
+  const initialState = {
+    name: '',
+    email: '',
+    rsvp: '1',
+    plusone: '0',
+    plusone_Name: '',
+    dietary: '',
+    event_id: '',
+    groupNumber: '',
+  }
+  const [guest, setGuest] = useState(initialState)
 
   const dispatch = useDispatch()
 
@@ -46,6 +56,36 @@ export default function AddGuests() {
           value={guest.email}
           onChange={handleChange}
         />
+        <p>
+          <label htmlFor="rsvp">Are you coming?</label>
+        </p>
+        <select
+          name="rsvp"
+          value={guest.rsvp}
+          onChange={(evt) => handleChange(evt)}
+        >
+          <option name="rsvp" value="1">
+            Yeeea!
+          </option>
+          <option name="rsvp" value="0">
+            Yeah, but Naaah
+          </option>
+        </select>
+        <p>
+          <label htmlFor="plusone">Would you like to bring a plus one?</label>
+        </p>
+        <select
+          name="plusone"
+          value={guest.plusone}
+          onChange={(evt) => handleChange(evt)}
+        >
+          <option name="plusone" value="0">
+            No, I fly solo.
+          </option>
+          <option name="plusone" value="1">
+            Yes, I can't be alone for 5 minutes.
+          </option>
+        </select>
         <label htmlFor="plusone_Name">Name of Plus One:</label>
         <input
           id="plusone_Name"
@@ -70,12 +110,13 @@ export default function AddGuests() {
           value={guest.event_id}
           onChange={handleChange}
         />
-        <label htmlFor="table_Number">Table Number:</label>
+        <label htmlFor="groupNumber">Group Number:</label>
         <input
-          id="table_Number"
+          id="groupNumber"
           type="text"
-          name="table_Number"
-          value={guest.table_Number}
+          name="groupNumber"
+          value={guest.groupNumber}
+          onChange={handleChange}
         />
         <button type="submit">Submit</button>
       </form>

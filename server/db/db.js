@@ -7,7 +7,9 @@ function getGuests(db = connection) {
 }
 
 function addGuest(
-  { name, email, plusone, plusone_Name, dietary, rsvp, event_id, table_Number },
+
+  { name, email, plusone, plusone_Name, dietary, rsvp, event_id, groupNumber },
+
   db = connection
 ) {
   return db('guest')
@@ -19,7 +21,7 @@ function addGuest(
       dietary,
       rsvp,
       event_id,
-      table_Number,
+      groupNumber,
     })
     .join('event', 'event.id', 'guests.event_id as guests.eventId')
 }
