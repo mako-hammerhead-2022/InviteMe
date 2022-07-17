@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 
-export default function Navbar() {
+export default function rsvp() {
   const { logout } = useAuth0()
   // const location = useLocation()
   // const id = location.pathname.split('/')[2]
