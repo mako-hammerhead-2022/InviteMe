@@ -12,8 +12,7 @@ const Profile = () => {
         <h2>Welcome {user?.name}</h2>
         {/* <ul>
           {Object.keys(user).map((objKey, i) => (
-            <li key={i}>
-             
+            <li key={i}>             
               {objKey}: {user[objKey]}{' '}
             </li>
           ))}

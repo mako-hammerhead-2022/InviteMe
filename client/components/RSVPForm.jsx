@@ -3,10 +3,6 @@ import { useDispatch } from 'react-redux'
 import { updateGuest } from '../actions'
 import { useLocation } from 'react-router'
 import { getSingleGuest } from '../apis'
-import { useAuth0 } from '@auth0/auth0-react'
-import LoginButton from './LoginButton'
-import LogoutButton from './LogoutButton'
-import Profile from './Profile'
 
 export default function RSVPForm() {
   const dispatch = useDispatch()
@@ -23,16 +19,6 @@ export default function RSVPForm() {
   const [guestData, setGuestData] = useState(initialState)
   const location = useLocation()
   const id = location.pathname.split('/')[2]
-
-  // console.log(id)
-
-  //api function fetches data from db
-  //or passing via reducts
-
-  //useeffect to call single user db api
-  //useparams to get id
-
-  // fetch single guest by id
 
   const [guest, setGuest] = useState({})
 
@@ -64,19 +50,6 @@ export default function RSVPForm() {
   // const { isLoading, error } = useAuth0()
   return (
     <div className="rsvpform">
-      {}
-      <div>
-        {/* <h1>Auth0 Login</h1> */}
-        {/* {error && <p>Authentication Error</p>}
-        {!error && isLoading && <p>Loading...</p>}
-        {!error && !isLoading && ( */}
-        <>
-          {/* <LoginButton /> */}
-          {/* <LogoutButton /> */}
-          {/* <Profile /> */}
-        </>
-        {/* )} */}
-      </div>
       <h1>We are pleased to invite you to our wedding!</h1>
       <h2>Please confirm your attendance below:</h2>
       <form onSubmit={handleSubmit}>

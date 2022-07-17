@@ -1,14 +1,14 @@
 import React from 'react'
-import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
+// import { useLocation } from 'react-router'
 
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Navbar() {
   const { logout } = useAuth0()
-  const location = useLocation()
-  const id = location.pathname.split('/')[2]
+  // const location = useLocation()
+  // const id = location.pathname.split('/')[2]
 
   function handleLogoff(e) {
     e.preventDefault()

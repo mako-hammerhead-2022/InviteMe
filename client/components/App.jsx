@@ -17,8 +17,6 @@ function App() {
             <Route path="/rsvp/:id" element={<RSVPForm />} />
             <Route path="/seatingplan" element={<SeatingPlan />} />
             <Route path="/login" element={<LoginPage />} />
-
-            {/* <Route path="/addguest" element={<AddGuests />} /> */}
           </Routes>
         </Router>
       </div>
