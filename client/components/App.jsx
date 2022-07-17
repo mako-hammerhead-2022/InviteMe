@@ -17,9 +17,9 @@ function App() {
           <Routes>
             <Route element={<MainLayout />}>
               <Route exact path="/" element={<GuestList />} />
-              <Route exact path="/rsvp/:id" element={<RSVPForm />} />
               <Route exact path="/seatingplan" element={<SeatingPlan />} />
             </Route>
+            <Route exact path="/rsvp/:id" element={<RSVPForm />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
