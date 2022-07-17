@@ -13,6 +13,8 @@ export default function RSVPForm() {
     plusone: '0',
     plusone_Name: '',
     dietary: '',
+    event_id: '',
+    groupNumber: '',
   }
   const [guestData, setGuestData] = useState(initialState)
   const location = useLocation()

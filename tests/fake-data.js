@@ -1,6 +1,6 @@
 export const guestsArray = [
   {
-    id: '1',
+    id: 1,
     name: 'Bobby',
     email: 'bobby@gmail.com',
     plusone: 1,
@@ -11,7 +11,7 @@ export const guestsArray = [
     table_Number: 1,
   },
   {
-    id: '2',
+    id: 2,
     name: 'Jack',
     email: 'jack@hotmail.com',
     plusone: 1,
@@ -22,7 +22,7 @@ export const guestsArray = [
     table_Number: 1,
   },
   {
-    id: '3',
+    id: 3,
     name: 'Dracula',
     email: 'dracula@hotmail.com',
     plusone: 0,
@@ -33,7 +33,7 @@ export const guestsArray = [
     table_Number: 2,
   },
   {
-    id: '4',
+    id: 4,
     name: 'Erlich',
     email: 'erlich@gmail.com',
     plusone: 0,
@@ -44,7 +44,7 @@ export const guestsArray = [
     table_Number: 3,
   },
   {
-    id: '5',
+    id: 5,
     name: 'Taika',
     email: 'taika@gmail.com',
     plusone: 0,

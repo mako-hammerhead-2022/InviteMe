@@ -14,7 +14,7 @@ exports.seed = function (knex) {
           dietary: 'none',
           rsvp: 1,
           event_id: 1,
-          table_Number: 1,
+          groupNumber: 1,
         },
         {
           id: '2',
@@ -25,7 +25,7 @@ exports.seed = function (knex) {
           dietary: 'fish',
           rsvp: 1,
           event_id: 1,
-          table_Number: 1,
+          groupNumber: 1,
         },
         {
           id: '3',
@@ -36,7 +36,7 @@ exports.seed = function (knex) {
           dietary: 'dairy',
           rsvp: 0,
           event_id: 1,
-          table_Number: 2,
+          groupNumber: 2,
         },
         {
           id: '4',
@@ -47,7 +47,7 @@ exports.seed = function (knex) {
           dietary: 'pesca-pescatarian',
           rsvp: 1,
           event_id: 2,
-          table_Number: 3,
+          groupNumber: 3,
         },
         {
           id: '5',
@@ -58,7 +58,7 @@ exports.seed = function (knex) {
           dietary: 'none',
           rsvp: 0,
           event_id: 1,
-          table_Number: 1,
+          groupNumber: 1,
         },
       ])
     )
