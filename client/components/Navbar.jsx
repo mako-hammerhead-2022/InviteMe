@@ -2,9 +2,19 @@ import React from 'react'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { useAuth0 } from '@auth0/auth0-react'
+
 export default function Navbar() {
+  const { logout } = useAuth0()
   const location = useLocation()
   const id = location.pathname.split('/')[2]
+
+  function handleLogoff(e) {
+    e.preventDefault()
+    logout()
+  }
+
   return (
     <div className="top">
       <div className="topRight">
@@ -15,10 +25,18 @@ export default function Navbar() {
           <Link to="/seatingplan">
             <li className="topListItem">SEATING PLAN</li>
           </Link>
-
-          {/* <Link to="/addguest">
-            <li className="topListItem">ADD GUEST</li>
-          </Link> */}
+          <IfNotAuthenticated>
+            <Link to="/login">
+              <li className="topListItem">LOGIN</li>
+            </Link>
+          </IfNotAuthenticated>
+          <IfAuthenticated>
+            <li className="topListItem">
+              <a href="/" onClick={handleLogoff}>
+                LOG OUT
+              </a>
+            </li>
+          </IfAuthenticated>
           {/* <Link to={`/rsvp/${id}`}> */}
           <Link to="/rsvp/1">
             <li className="topListItem">RSVP</li>
