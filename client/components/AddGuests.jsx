@@ -27,7 +27,7 @@ export default function AddGuests() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('Submit btn was clicked!!')
+    // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
     setGuest('')
     dispatch(fetchGuests())

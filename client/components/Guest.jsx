@@ -17,7 +17,7 @@ export default function Guest({ guestInfo }) {
     const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
     sendEmail(recipient)
-    console.log('button clicked')
+    // console.log('button clicked')
   }
 
   const handleDelete = (e) => {
