@@ -18,16 +18,6 @@ export default function RSVPForm() {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
 
-  // console.log(id)
-
-  //api function fetches data from db
-  //or passing via reducts
-
-  //useeffect to call single user db api
-  //useparams to get id
-
-  // fetch single guest by id
-
   const [guest, setGuest] = useState({})
 
   const getGuestById = async () => {
