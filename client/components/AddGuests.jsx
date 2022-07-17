@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchGuests, addGuest } from '../actions'
 
+// for merge
+
 export default function AddGuests() {
   const [guest, setGuest] = useState('')
 
