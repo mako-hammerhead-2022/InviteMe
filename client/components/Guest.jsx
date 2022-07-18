@@ -14,6 +14,7 @@ export default function Guest({ guestInfo }) {
     //   email: guest.email,
     //   id: guest.id,
     // }))
+    // remove commented out code
     const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
     sendEmail(recipient)
