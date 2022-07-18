@@ -9,7 +9,7 @@ export default function Callback() {
       if (isAuthenticated) {
         const url = localStorage.getItem('redirect_url')
         if (url) {
-          console.log(url)
+          // console.log(url)
           navigate(url)
         } else {
           navigate('/')
