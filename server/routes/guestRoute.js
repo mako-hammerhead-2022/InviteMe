@@ -121,4 +121,17 @@ router.patch('/:id', (req, res) => {
     })
 })
 
+router.get('/by-email/:email', (req, res) => {
+  const email = req.params.email
+  console.log(email)
+  db.findGuestByEmail(email)
+    .then((guest) => {
+      res.json(guest)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
 module.exports = router

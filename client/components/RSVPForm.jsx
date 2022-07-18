@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateGuest } from '../actions'
-import { useLocation } from 'react-router'
-import { getSingleGuest } from '../apis'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
+import request from 'superagent'
+
+async function getGuestByEmail(email) {
+  return request.get(`/api/v1/guests/by-email/${email}`).then((res) => res.body)
+}
+
+const initialState = {
+  name: '',
+  email: '',
+  rsvp: '0',
+  plusone: '0',
+  plusone_Name: '',
+  dietary: '',
+  event_id: '',
+  groupNumber: '',
+}
 
 export default function RSVPForm() {
+  const [guest, setGuest] = useState(initialState)
+  const { isAuthenticated, isLoading, user } = useAuth0()
+  const navigate = useNavigate()
+  const { id } = useParams()
   const dispatch = useDispatch()
-  const initialState = {
-    name: '',
-    email: '',
-    rsvp: '1',
-    plusone: '0',
-    plusone_Name: '',
-    dietary: '',
-    event_id: '',
-    groupNumber: '',
-  }
-  const [guestData, setGuestData] = useState(initialState)
-  const location = useLocation()
-  const id = location.pathname.split('/')[2]
-
-  const [guest, setGuest] = useState({})
-
-  const getGuestById = async () => {
-    const res = await getSingleGuest(id)
-    setGuest(res)
-  }
 
   useEffect(() => {
-    getGuestById(id)
-  }, [])
+    if (!isLoading) {
+      if (isAuthenticated) {
+        checkUser()
+      } else {
+        localStorage.setItem('redirect_url', `/rsvp/${id}`)
+        navigate(`/login`)
+      }
+    }
+
+    async function checkUser() {
+      const guest = await getGuestByEmail(user.email)
+      if (guest.id !== Number(id)) {
+        navigate('/')
+      } else {
+        console.log(guest)
+        setGuest(guest)
+      }
+    }
+  }, [isLoading, isAuthenticated, user])
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    dispatch(updateGuest({ id, ...guestData }))
-    setGuestData(initialState)
+    dispatch(updateGuest({ id, ...guest }))
+    setGuest(initialState)
   }
 
   const handleChange = (evt) => {
     const key = evt.target.name
     const value = evt.target.value
-    let prev = { ...guestData }
+    let prev = { ...guest }
     prev[key] = value
-    setGuestData(prev)
-    // console.log(value)
+    setGuest(prev)
   }
 
-  // console.log(guestData)
-  // const { isLoading, error } = useAuth0()
   return (
     <div className="rsvpform">
       <h1>We are pleased to invite you to our wedding!</h1>
@@ -61,7 +75,7 @@ export default function RSVPForm() {
           id="name"
           type="text"
           name="name"
-          value={guestData.name}
+          value={guest.name}
           onChange={(evt) => handleChange(evt)}
         />
         <p>
@@ -72,7 +86,7 @@ export default function RSVPForm() {
           id="email"
           type="text"
           name="email"
-          value={guestData.email}
+          value={guest.email}
           onChange={(evt) => handleChange(evt)}
         />
         <p>
@@ -80,7 +94,7 @@ export default function RSVPForm() {
         </p>
         <select
           name="rsvp"
-          value={guestData.rsvp}
+          value={guest.rsvp}
           onChange={(evt) => handleChange(evt)}
         >
           <option name="rsvp" value="1">
@@ -95,14 +109,14 @@ export default function RSVPForm() {
         </p>
         <select
           name="plusone"
-          value={guestData.plusone}
+          value={guest.plusone}
           onChange={(evt) => handleChange(evt)}
         >
           <option name="plusone" value="0">
             No, I fly solo.
           </option>
           <option name="plusone" value="1">
-            Yes, I can't be alone for 5 minutes.
+            {"Yes, I can't be alone for 5 minutes."}
           </option>
         </select>
         <p>
@@ -113,7 +127,7 @@ export default function RSVPForm() {
           id="plusone_Name"
           type="text"
           name="plusone_Name"
-          value={guestData.plusone_Name}
+          value={guest.plusone_Name}
           onChange={(evt) => handleChange(evt)}
         />
         <p>
@@ -124,7 +138,7 @@ export default function RSVPForm() {
           id="dietary"
           type="text"
           name="dietary"
-          value={guestData.dietary}
+          value={guest.dietary}
           onChange={(evt) => handleChange(evt)}
         />
         <input type="submit" value="Submit" />

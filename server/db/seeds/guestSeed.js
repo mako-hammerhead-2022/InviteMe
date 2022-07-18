@@ -60,6 +60,17 @@ exports.seed = function (knex) {
           event_id: 1,
           groupNumber: 1,
         },
+        {
+          id: '6',
+          name: 'Rohan',
+          email: 'rohttfh@gmail.com',
+          plusone: 0,
+          plusone_Name: '',
+          dietary: 'none',
+          rsvp: 0,
+          event_id: 1,
+          groupNumber: 1,
+        },
       ])
     )
 }
