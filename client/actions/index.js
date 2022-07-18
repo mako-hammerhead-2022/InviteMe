@@ -16,20 +16,26 @@ import {
 export const fetchGuests = () => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getAllGuests()
-      .then((guests) => dispatch(receiveGuests(guests)))
-      .then((guests) => console.log(guests))
-      .catch((err) => dispatch(setError(err.message)))
+    return (
+      getAllGuests()
+        .then((guests) => dispatch(receiveGuests(guests)))
+        .then((guests) => console.log(guests))
+        //remove debugging code
+        .catch((err) => dispatch(setError(err.message)))
+    )
   }
 }
 
 export const fetchSingleGuest = (id) => {
   return (dispatch) => {
     dispatch(setLoading())
-    return getSingleGuest(id)
-      .then((guest) => dispatch(receiveGuests(guest)))
-      .then((guests) => console.log(guests))
-      .catch((err) => dispatch(setError(err.message)))
+    return (
+      getSingleGuest(id)
+        .then((guest) => dispatch(receiveGuests(guest)))
+        .then((guests) => console.log(guests))
+        //remove debugging code
+        .catch((err) => dispatch(setError(err.message)))
+    )
   }
 }
 
@@ -83,6 +89,7 @@ export const deleteGuest = (id) => {
 
 export const addGuest = (newGuest) => {
   // console.log('Returning from actions', newGuest)
+  //remove commented out code
   return (dispatch) => {
     return addNewGuest(newGuest)
       .then((guests) => dispatch(receiveGuests(guests)))

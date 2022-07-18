@@ -12,3 +12,4 @@
 // }
 
 // export default errReducer
+//if you aren't going to use the reducer delete it

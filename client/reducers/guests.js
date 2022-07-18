@@ -13,6 +13,7 @@ const guestsReducer = (state = initialState, action) => {
     case ADD_GUEST:
       return [...state, action.payload]
     case SET_GUEST:
+      //technically this overwrites all guests so SET_GUESTS would be a better name
       return action.payload
 
     default:
