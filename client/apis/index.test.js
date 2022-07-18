@@ -1,4 +1,3 @@
-
 // import nock from 'nock'
 
 it('runs', () => {
@@ -83,8 +82,6 @@ describe('getSingleGuest', () => {
   })
 })
 
-//check status 200
-//check correct response being sent
 describe('sendEmail', () => {
   const recipient = guestsArray[1]
   console.log(recipient)
@@ -107,4 +104,3 @@ describe('sendEmail', () => {
 //     .get('/api/v1/guests/')
 //     .reply(200, guestsArray)
 // })
-
