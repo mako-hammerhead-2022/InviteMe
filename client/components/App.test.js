@@ -10,3 +10,5 @@ describe('guests reducer', () => {
     expect(newState.guests).toEqual(action.payload)
   })
 })
+
+//MORE TESTS TO COME...
