@@ -89,8 +89,5 @@
     "singleQuote": true
   },
   "browserslist": "> 2%, not dead",
-  "engines": {
-    "node": "14.x"
-  },
   "build": "webpack && knex migrate:latest"
 }

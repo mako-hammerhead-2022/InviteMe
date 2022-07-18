@@ -1,3 +1,10 @@
+
+// import nock from 'nock'
+
+it('runs', () => {
+  expect(1).toBe(1)
+})
+
 import nock from 'nock'
 import { addNewGuest, getAllGuests, getSingleGuest, sendEmail } from './index'
 import { guestsArray } from '../../tests/fake-data'
@@ -100,3 +107,4 @@ describe('sendEmail', () => {
 //     .get('/api/v1/guests/')
 //     .reply(200, guestsArray)
 // })
+

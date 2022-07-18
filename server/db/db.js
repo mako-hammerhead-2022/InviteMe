@@ -32,7 +32,8 @@ function deleteGuest(id, db = connection) {
 
 function updateGuest(
   id,
-  { name, email, plusone, plusone_Name, dietary, rsvp, db = connection }
+  { name, email, plusone, plusone_Name, dietary, rsvp },
+  db = connection
 ) {
   return db('guest')
     .update({
@@ -44,7 +45,7 @@ function updateGuest(
       rsvp,
     })
     .where('id', id)
-    .then(() => findGuestById(id))
+    .then(() => findGuestById(id, db))
 }
 
 function findGuestById(id, db = connection) {

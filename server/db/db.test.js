@@ -25,19 +25,19 @@ describe('test db functions', () => {
     })
   })
   it('tests the addGuest function', () => {
-    const addGuest = [
-      'Benjamin',
-      'ben@devacademy.co.nz',
-      true,
-      'Savannah',
-      'Dairy products',
-      true,
-      6,
-      7,
-    ]
+    const addGuest = {
+      name: 'Benjamin',
+      email: 'ben@devacademy.co.nz',
+      plusone:  true,
+      plusone_name: 'Savannah',
+      dietary: 'Dairy products',
+      rsvp: true,
+      event_id: 6,
+      groupNumber: 7,
+    }
     expect.assertions(2)
     return db
-      .addGuest(...addGuest, testDb)
+      .addGuest(addGuest, testDb)
       .then(() => {
         return db.getGuests(testDb)
       })
@@ -64,7 +64,7 @@ describe('test db functions', () => {
       name: 'Ngairo',
     }
     return db
-      .patchGuest(3, patchGuest, testDb) // 1: update data user name: 'Angela
+      .updateGuest(3, patchGuest, testDb) // 1: update data user name: 'Angela
       .then(() => {
         return db.getGuests(testDb) // 2: receive all guests
       })
