@@ -17,7 +17,7 @@ const LoginPage = () => {
           <LogoutButton />
           <Profile />
         </>
-      )}
+      )} 
     </div>
   )
 }
