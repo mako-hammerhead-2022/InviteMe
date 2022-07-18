@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchGuests, addGuest } from '../actions'
+import { Input, Select, Button, Text } from '@chakra-ui/react'
+;<link
+  href="https://fonts.googleapis.com/css?family=Montserrat:300,700|Playfair+Display:400i"
+  rel="stylesheet"
+></link>
 
 export default function AddGuests() {
   const initialState = {
@@ -39,17 +44,25 @@ export default function AddGuests() {
 
   return (
     <>
+      <Text color="white" fontSize="6xl" fontWeight="extrabold">
+        Invite your friends and family!
+      </Text>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Guest Name:</label>
-        <input
+        <label htmlFor="name">
+          <Text fontSize="2xl" fontWeight="bold" color="#9B9A94">
+            Guest Name:
+          </Text>
+        </label>
+        <Input
           id="name"
           type="text"
           name="name"
           value={guest.name}
           onChange={handleChange}
+          placeholder="Basic usage"
         />
         <label htmlFor="email">Email:</label>
-        <input
+        <Input
           id="email"
           type="text"
           name="email"
@@ -59,7 +72,7 @@ export default function AddGuests() {
         <p>
           <label htmlFor="rsvp">Are you coming?</label>
         </p>
-        <select
+        <Select
           name="rsvp"
           value={guest.rsvp}
           onChange={(evt) => handleChange(evt)}
@@ -70,11 +83,11 @@ export default function AddGuests() {
           <option name="rsvp" value="0">
             Yeah, but Naaah
           </option>
-        </select>
+        </Select>
         <p>
           <label htmlFor="plusone">Would you like to bring a plus one?</label>
         </p>
-        <select
+        <Select
           name="plusone"
           value={guest.plusone}
           onChange={(evt) => handleChange(evt)}
@@ -85,9 +98,11 @@ export default function AddGuests() {
           <option name="plusone" value="1">
             Yes, I can't be alone for 5 minutes.
           </option>
-        </select>
+        </Select>
+        <br></br>
+        <br></br>
         <label htmlFor="plusone_Name">Name of Plus One:</label>
-        <input
+        <Input
           id="plusone_Name"
           type="text"
           name="plusone_Name"
@@ -95,7 +110,7 @@ export default function AddGuests() {
           onChange={handleChange}
         />
         <label htmlFor="dietary">Dietary:</label>
-        <input
+        <Input
           id="dietary"
           type="text"
           name="dietary"
@@ -103,7 +118,7 @@ export default function AddGuests() {
           onChange={handleChange}
         />
         <label htmlFor="event_id">Event Id:</label>
-        <input
+        <Input
           id="event_id"
           type="text"
           name="event_id"
@@ -111,14 +126,16 @@ export default function AddGuests() {
           onChange={handleChange}
         />
         <label htmlFor="groupNumber">Group Number:</label>
-        <input
+        <Input
           id="groupNumber"
           type="text"
           name="groupNumber"
           value={guest.groupNumber}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit" colorScheme="teal" variant="outline">
+          Submit
+        </Button>
       </form>
     </>
   )
