@@ -40,7 +40,7 @@ export default function RSVPForm() {
     async function checkUser() {
       const guest = await getGuestByEmail(user.email)
       if (guest.id !== Number(id)) {
-        navigate('/')
+        navigate('*')
       } else {
         console.log(guest)
         setGuest(guest)
@@ -51,6 +51,7 @@ export default function RSVPForm() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     dispatch(updateGuest({ id, ...guest }))
+    alert('submission successful!')
     setGuest(initialState)
   }
 
