@@ -10,7 +10,7 @@ export function sendEmail(recipient) {
   return request
     .post(`${guestlistUrl}send-invites`)
     .send({ recipient })
-    .then((res) => res.body)
+    .then((res) => res)
 }
 
 export function deleteGuestApi(id) {

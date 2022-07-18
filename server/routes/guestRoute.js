@@ -20,7 +20,7 @@ router.post('/send-invites', (req, res) => {
   const { recipient } = req.body
   sendEmail(recipient)
     .then((info) => {
-      console.log(info)
+      console.log('send-invitres line 23', info)
       res.sendStatus(200)
     })
     .catch((err) => {

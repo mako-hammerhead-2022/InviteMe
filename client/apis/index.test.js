@@ -1,5 +1,5 @@
 import nock from 'nock'
-import { addNewGuest, getAllGuests, getSingleGuest } from './index'
+import { addNewGuest, getAllGuests, getSingleGuest, sendEmail } from './index'
 import { guestsArray } from '../../tests/fake-data'
 
 describe('getAllGuests', () => {
@@ -78,9 +78,20 @@ describe('getSingleGuest', () => {
 
 //check status 200
 //check correct response being sent
-// describe('sendEmail', () => {
-//   const scope = nock()
-// })
+describe('sendEmail', () => {
+  const recipient = guestsArray[1]
+  console.log(recipient)
+  const scope = nock('http://localhost')
+    .post('/api/v1/guests/send-invites')
+    .reply(200)
+  test('returns success status 200', () => {
+    expect.assertions(2)
+    return sendEmail(recipient).then((res) => {
+      expect(res.status).toBe(200)
+      expect(scope.isDone()).toBe(true)
+    })
+  })
+})
 
 //check status 200
 //check correct response being sent
