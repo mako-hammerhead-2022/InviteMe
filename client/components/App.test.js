@@ -9,10 +9,9 @@ import { Provider } from 'react-redux'
 
 import Navbar from './Navbar'
 import GuestList from './GuestList'
-
 import { guestsArray } from '../../tests/fake-data'
 
-describe('guests reducer', () => {
+describe('setGuests reducer', () => {
   it('sets guests data', () => {
     const oldState = ['david']
     const action = setGuest(['ayoung'])
