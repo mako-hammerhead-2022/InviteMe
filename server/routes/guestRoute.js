@@ -20,7 +20,7 @@ router.post('/send-invites', (req, res) => {
   const { recipient } = req.body
   sendEmail(recipient)
     .then((info) => {
-      console.log(info)
+      console.log('send-invitres line 23', info)
       res.sendStatus(200)
     })
     .catch((err) => {
@@ -114,6 +114,19 @@ router.patch('/:id', (req, res) => {
     .then((updatedGuest) => {
       res.json(updatedGuest)
       return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
+})
+
+router.get('/by-email/:email', (req, res) => {
+  const email = req.params.email
+  console.log(email)
+  db.findGuestByEmail(email)
+    .then((guest) => {
+      res.json(guest)
     })
     .catch((err) => {
       console.log(err)

@@ -3,19 +3,19 @@ const request = require('superagent')
 const guestlistUrl = '/api/v1/guests/'
 
 export function getAllGuests() {
-  return request.get('/api/v1/guests/').then((res) => res.body)
+  return request.get(guestlistUrl).then((res) => res.body)
 }
 
 export function sendEmail(recipient) {
   return request
     .post(`${guestlistUrl}send-invites`)
     .send({ recipient })
-    .then((res) => res.body)
+    .then((res) => res)
 }
 
 export function deleteGuestApi(id) {
   return request
-    .del('/api/v1/guests/')
+    .del(guestlistUrl)
     .send({ id })
     .set('Accept', 'application/json')
     .then((res) => res.body)

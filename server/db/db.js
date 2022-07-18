@@ -7,7 +7,6 @@ function getGuests(db = connection) {
 }
 
 function addGuest(
-
   { name, email, plusone, plusone_Name, dietary, rsvp, event_id, groupNumber },
 
   db = connection
@@ -53,10 +52,15 @@ function findGuestById(id, db = connection) {
   return db('guest').select().where('id', id).first()
 }
 
+function findGuestByEmail(email, db = connection) {
+  return db('guest').select('*').where('email', email).first()
+}
+
 module.exports = {
   addGuest,
   getGuests,
   deleteGuest,
   updateGuest,
   findGuestById,
+  findGuestByEmail,
 }
