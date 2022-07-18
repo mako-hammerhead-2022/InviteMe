@@ -6,7 +6,7 @@ exports.seed = function (knex) {
     .then(() =>
       knex('guest').insert([
         {
-          id: '1',
+          id: 1,
           name: 'Ayoung',
           email: 'ayoungleeh@gmail.com',
           plusone: 1,
@@ -17,7 +17,7 @@ exports.seed = function (knex) {
           groupNumber: 1,
         },
         {
-          id: '2',
+          id: 2,
           name: 'Beyond',
           email: 'allstar_beyond@hotmail.com',
           plusone: 1,
@@ -28,7 +28,7 @@ exports.seed = function (knex) {
           groupNumber: 1,
         },
         {
-          id: '3',
+          id: 3,
           name: 'Angela',
           email: 'angela_yk@hotmail.com',
           plusone: 0,
@@ -39,7 +39,7 @@ exports.seed = function (knex) {
           groupNumber: 2,
         },
         {
-          id: '4',
+          id: 4,
           name: 'David',
           email: 'davehu0623@gmail.com',
           plusone: 0,
@@ -50,7 +50,7 @@ exports.seed = function (knex) {
           groupNumber: 3,
         },
         {
-          id: '5',
+          id: 5,
           name: 'Ngairo',
           email: 'ngairotap@gmail.com',
           plusone: 0,
