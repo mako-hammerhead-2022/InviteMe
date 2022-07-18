@@ -53,6 +53,7 @@ export default function RSVPForm() {
     dispatch(updateGuest({ id, ...guest }))
     alert('submission successful!')
     setGuest(initialState)
+    navigate('/login')
   }
 
   const handleChange = (evt) => {
