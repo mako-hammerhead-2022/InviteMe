@@ -5,7 +5,7 @@ import {
   ADD_GUESTS_SUCCESS,
 } from '../actions'
 
-const initialState = []
+export const initialState = []
 
 const guestsReducer = (state = initialState, action) => {
   switch (action.type) {

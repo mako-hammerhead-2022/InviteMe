@@ -32,7 +32,6 @@ export default function AddGuests() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
     setGuest(initialState)
     dispatch(fetchGuests())
@@ -128,7 +127,7 @@ export default function AddGuests() {
             No, I fly solo.
           </option>
           <option name="plusone" value="1">
-            Yes, I can't be alone for 5 minutes.
+            Yes, I can&apos;t be alone for 5 minutes.
           </option>
         </Select>
         <br></br>
