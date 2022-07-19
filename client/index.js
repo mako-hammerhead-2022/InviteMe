@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             redirectUri={window.location.origin}
             audience="https://guests/api"
           >
-            <App />
+            <ChakraProvider>
+              <App />
+            </ChakraProvider>
           </Auth0Provider>
         </Provider>
       </BrowserRouter>
