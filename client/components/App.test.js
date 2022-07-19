@@ -4,7 +4,6 @@ import App from './App.jsx'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-
 import Navbar from './Navbar'
 import GuestList from './GuestList'
 import { guestsArray } from '../../tests/fake-data'
