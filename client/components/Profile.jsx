@@ -8,6 +8,7 @@ const Profile = () => {
     isAuthenticated && (
       <article className="column">
         {/* {JSON.stringify(user)} */}
+        {/* {user?.picture && <img src={user.picture} alt={user?.name} />} */}
         <h2 aria-label="login message" className="login-welcome">
           {`Thank you, ${user?.name}`}
         </h2>
