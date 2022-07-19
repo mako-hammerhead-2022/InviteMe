@@ -41,29 +41,40 @@ describe('mock route data', () => {
         expect(res.body).toHaveLength(2)
       })
   })
-  // test('POST route test', () => {
-  //   const addGuest = {
-  //     name: 'Benjamin',
-  //     email: 'ben@devacademy.co.nz',
-  //     plusone:  true,
-  //     plusone_name: 'Savannah',
-  //     dietary: 'Dairy products',
-  //     rsvp: true,
-  //     event_id: 6,
-  //     groupNumber: 7,
-  //   }
-  //   expect.assertions(2)
-  //   return db
-  //   .addGuest
-  //   .getGuests.mockImplementation(() => Promise.resolve(addGuest))
-  //   .request(server)
-  //     .get('/api/v1/guests')
-  //     .expect(200)
-  //     .then((result) => {
-  //       expect(result[3].name).toBe('Benjamin')
-  //       expect(result).toHaveLength(3)
-  //     })
-  // })
 
-
+  test('POST route test', () => {
+    // You don't need to mock the below, even though it is the information you 
+    // might pass to the addGuest db function. We are testing the route
+    // So we only care what gets returned from the db function
+    // const addGuest = {
+    //   name: 'Benjamin',
+    //   email: 'ben@devacademy.co.nz',
+    //   plusone:  true,
+    //   plusone_name: 'Savannah',
+    //   dietary: 'Dairy products',
+    //   rsvp: true,
+    //   event_id: 6,
+    //   groupNumber: 7,
+    // }
+    expect.assertions(2)
+    // What we do want to mock is what will be returned (Promise.resolve)
+    // knex INSERT functions just return the newly generated id of the added item
+    // We're using 5 here, because your seed data's last id is 4
+    db.addGuest.mockImplementation(() => Promise.resolve(5))
+    // from the server, we request the route we want - you had it as 
+    // get, but we want to test the post route here.
+    return request(server)
+      .post('/api/v1/guests')
+      // .expect(200)
+      .then((result) => {
+        // Just to demo what comes back...
+        // console.log the full result if you are curious
+        // It's a big objedt with keys including text, status, etc.
+        console.log("result", result.text)
+        // Status code 200 means things went as expected
+        expect(result.status).toBe(200)
+        // and we're getting back the id we expect
+        expect(result.text).toContain('5')
+      })
+  })
 })
