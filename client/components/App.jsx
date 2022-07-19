@@ -11,12 +11,10 @@ import { Route, Routes } from 'react-router-dom'
 
 import LogoutPage from './LogoutPage'
 
-
 function App() {
   return (
     <>
       <div className="app">
-
         {/* <Navbar /> */}
         <Routes>
           <Route element={<MainLayout />}>
@@ -27,10 +25,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/callback" element={<Callback />} />
           <Route path="*" element={<NoMatch />} />
-            <Route path="/logout" element={<LogoutPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
         </Routes>
-
-
       </div>
     </>
   )

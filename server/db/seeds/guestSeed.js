@@ -30,7 +30,7 @@ exports.seed = function (knex) {
         {
           id: 3,
           name: 'Angela',
-          email: 'angela_yk@hotmail.com',
+          email: 'nzangela78@gmail.com',
           plusone: 0,
           plusone_Name: '',
           dietary: 'dairy',

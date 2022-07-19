@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom'
 import React from 'react'
 import App from './App.jsx'
-import guests from '../reducers'
-import { setGuest } from '../actions/index.js'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -10,15 +8,6 @@ import { Provider } from 'react-redux'
 import Navbar from './Navbar'
 import GuestList from './GuestList'
 import { guestsArray } from '../../tests/fake-data'
-
-describe('setGuests reducer', () => {
-  it('sets guests data', () => {
-    const oldState = ['david']
-    const action = setGuest(['ayoung'])
-    const newState = guests(oldState, action)
-    expect(newState.guests).toEqual(action.payload)
-  })
-})
 
 const fakeStore = {
   subscribe: jest.fn(),
