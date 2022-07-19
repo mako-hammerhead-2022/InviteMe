@@ -9,14 +9,9 @@ const Profile = () => {
       <article className="column">
         {/* {JSON.stringify(user)} */}
         {/* {user?.picture && <img src={user.picture} alt={user?.name} />} */}
-        <h2>Thank you, {user?.name}</h2>
-        {/* <ul>
-          {Object.keys(user).map((objKey, i) => (
-            <li key={i}>             
-              {objKey}: {user[objKey]}{' '}
-            </li>
-          ))}
-        </ul> */}
+        <h2 aria-label="login message" className="login-welcome">
+          {`Thank you, ${user?.name}`}
+        </h2>
       </article>
     )
   )
