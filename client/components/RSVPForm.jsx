@@ -43,7 +43,7 @@ export default function RSVPForm() {
       if (guest.id !== Number(id)) {
         navigate('*')
       } else {
-        console.log(guest)
+        // console.log(guest)
         setGuest(guest)
       }
     }

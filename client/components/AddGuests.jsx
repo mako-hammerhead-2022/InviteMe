@@ -32,7 +32,6 @@ export default function AddGuests() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
     setGuest(initialState)
     dispatch(fetchGuests())
@@ -63,6 +62,7 @@ export default function AddGuests() {
           borderRadius="20pt"
           boxShadow="xl"
         >
+
           <br></br>
           <Center>
             <form onSubmit={handleSubmit}>
@@ -260,7 +260,6 @@ export default function AddGuests() {
                   Submit
                 </Button>
               </Center>
-
               <br></br>
               <br></br>
             </form>

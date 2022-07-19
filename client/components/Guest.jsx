@@ -7,19 +7,12 @@ import { sendEmail } from '../apis'
 import { Text, Box, Button, Grid, GridItem, Center } from '@chakra-ui/react'
 
 export default function Guest({ guestInfo }) {
-  // console.log(guestInfo)
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    // [{email: '', name: '', id: ''}]
-    // const recipients = guests.map((guest) => ({
-    //   email: guest.email,
-    //   id: guest.id,
-    // }))
     const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
     sendEmail(recipient)
-    // console.log('button clicked')
   }
 
   const handleDelete = (e) => {
@@ -30,6 +23,7 @@ export default function Guest({ guestInfo }) {
 
   return (
     <>
+
       <Center>
         <Grid templateColumns="repeat(5, 1fr)" alignItems={'center'}>
           <GridItem>
@@ -85,6 +79,7 @@ export default function Guest({ guestInfo }) {
         </Grid>
       </Center>
       <br></br>
+
     </>
   )
 }

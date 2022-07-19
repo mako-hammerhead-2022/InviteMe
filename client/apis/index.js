@@ -15,10 +15,10 @@ export function sendEmail(recipient) {
 
 export function deleteGuestApi(id) {
   return request
-    .delete(guestlistUrl)
+    .del(guestlistUrl)
     .send({ id })
     .set('Accept', 'application/json')
-    .then((res) => res)
+    .then((res) => res.body)
     .catch((err) => {
       console.err(err.message)
     })
