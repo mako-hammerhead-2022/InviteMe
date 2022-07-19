@@ -31,7 +31,7 @@ const onDragEnd = (result, columns, setColumns) => {
       },
     })
     const updatedGuestInfo = { ...removed, groupNumber: Number(table) }
-    console.log(updatedGuestInfo)
+    console.log('update guest info', updatedGuestInfo)
     //call in your function from index.js in actions, pass in the object of the updated guest info
     updateTableGuest(updatedGuestInfo)
   } else {
@@ -52,6 +52,9 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function App() {
   const guests = useSelector((state) => state.guests)
+
+  // Reset names into original table number
+  const [names, setNames] = useState('')
 
   const columnsFromBackend = {
     ['1']: {

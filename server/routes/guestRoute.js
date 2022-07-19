@@ -106,19 +106,19 @@ router.get('/:id', (req, res) => {
 })
 
 //UPDATE single guest /api/v1/guests/:id
-router.patch('/:id', (req, res) => {
-  const id = Number(req.body.params)
-  const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
-  db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
-    .then((updatedGuest) => {
-      res.json(updatedGuest)
-      return null
-    })
-    .catch((err) => {
-      console.log(err)
-      res.status(500).json({ message: 'Something went wrong' })
-    })
-})
+// router.patch('/:id', (req, res) => {
+//   const id = Number(req.body.params)
+//   const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
+//   db.updateGuestById(id, { name, email, plusone, plusoneName, dietary, rsvp })
+//     .then((updatedGuest) => {
+//       res.json(updatedGuest)
+//       return null
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//       res.status(500).json({ message: 'Something went wrong' })
+//     })
+// })
 
 router.get('/by-email/:email', (req, res) => {
   const email = req.params.email
@@ -135,7 +135,7 @@ router.get('/by-email/:email', (req, res) => {
 
 //router.patch that will take in the updated guest info and speak to the database
 router.patch('/:id', (req, res) => {
-  const id = Number(req.body.params)
+  const id = Number(req.params.id)
   const groupNumber = req.body
   db.updateGuestTable(id, groupNumber)
     .then((updateTable) => {
