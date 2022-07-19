@@ -3,6 +3,7 @@ import {
   ADD_GUEST,
   SET_GUEST,
   ADD_GUESTS_SUCCESS,
+  UPDATE_GROUPNUMBER,
 } from '../actions'
 
 const initialState = []
@@ -18,6 +19,12 @@ const guestsReducer = (state = initialState, action) => {
     case SET_GUEST:
       return action.payload
     //make another case for updating a guest table number
+    case UPDATE_GROUPNUMBER:
+      return state.map((guest) =>
+        guest.groupNumber === action.payload.oldNumber
+          ? action.payload.newNumber
+          : guest
+      )
     default:
       return state
   }

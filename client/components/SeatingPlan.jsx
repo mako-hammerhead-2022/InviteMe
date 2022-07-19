@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { v4 as uuidv4 } from 'uuid'
 
 // import { fetchGuests } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { updateTableGuest } from '../actions'
 
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return
@@ -18,7 +18,7 @@ const onDragEnd = (result, columns, setColumns) => {
     console.log(removed)
     console.log(destColumn)
     const table = destColumn.name.replace(/^\D+/g, '')
-    console.log(typeof table)
+    console.log('this is table', table)
     setColumns({
       ...columns,
       [source.droppableId]: {
@@ -33,6 +33,7 @@ const onDragEnd = (result, columns, setColumns) => {
     const updatedGuestInfo = { ...removed, groupNumber: Number(table) }
     console.log(updatedGuestInfo)
     //call in your function from index.js in actions, pass in the object of the updated guest info
+    updateTableGuest(updatedGuestInfo)
   } else {
     const column = columns[source.droppableId]
     const copiedItems = [...column.items]

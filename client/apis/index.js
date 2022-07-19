@@ -3,8 +3,15 @@ const request = require('superagent')
 const guestlistUrl = '/api/v1/guests/'
 
 // update guest table functions
-export function updateGuestTable() {
-  return console.log('hello')
+export function updateGuestTable(id) {
+  return request
+    .get(guestlistUrl)
+    .send({ id })
+    .set('Accept', 'application/json')
+    .then((res) => res.body.groupNumber)
+    .catch((err) => {
+      console.err(err.message)
+    })
 }
 
 export function getAllGuests() {
