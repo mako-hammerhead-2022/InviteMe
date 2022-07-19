@@ -5,7 +5,7 @@ import { fetchGuests } from '../actions'
 
 import AddGuests from './AddGuests'
 
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)

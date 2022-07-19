@@ -158,7 +158,7 @@ export default function AddGuests() {
                   No, I fly solo.
                 </option>
                 <option name="plusone" value="1">
-                  Yes, I can't be alone for 5 minutes.
+                  Yes, I can&apos;t be alone for 5 minutes.
                 </option>
               </Select>
               <br></br>
