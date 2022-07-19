@@ -6,7 +6,7 @@ import LoginPage from './LoginPage'
 import NoMatch from './NoMatch'
 import MainLayout from './MainLayout.jsx'
 import Callback from './Callback'
-<<<<<<< HEAD
+
 import { Route, Routes } from 'react-router-dom'
 
 import LogoutPage from './LogoutPage'
