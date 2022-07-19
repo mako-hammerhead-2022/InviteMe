@@ -5,19 +5,12 @@ import { deleteGuest } from '../actions'
 import { sendEmail } from '../apis'
 
 export default function Guest({ guestInfo }) {
-  // console.log(guestInfo)
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    // [{email: '', name: '', id: ''}]
-    // const recipients = guests.map((guest) => ({
-    //   email: guest.email,
-    //   id: guest.id,
-    // }))
     const recipient = { email: guestInfo.email, id: guestInfo.id }
     e.preventDefault()
     sendEmail(recipient)
-    // console.log('button clicked')
   }
 
   const handleDelete = (e) => {
@@ -41,7 +34,7 @@ export default function Guest({ guestInfo }) {
             <li>Group Number: {guestInfo.groupNumber}</li>
           </ul>
         </div>
-        {/* //send id with invite button */}
+
         <form onSubmit={handleSubmit}>
           <button type="submit">Send Invite</button>
         </form>
