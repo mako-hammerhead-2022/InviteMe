@@ -4,6 +4,8 @@ import { deleteGuest } from '../actions'
 
 import { sendEmail } from '../apis'
 
+import { Text, Box, Button, Grid, GridItem, Center } from '@chakra-ui/react'
+
 export default function Guest({ guestInfo }) {
   // console.log(guestInfo)
   const dispatch = useDispatch()
@@ -28,25 +30,61 @@ export default function Guest({ guestInfo }) {
 
   return (
     <>
-      <div>
-        <div>
-          <ul>
-            <li>Guest Name: {guestInfo.name}</li>
-            <li>Email: {guestInfo.email}</li>
-            <li>Plus One: {guestInfo.plusone}</li>
-            <li>Name of Plus One: {guestInfo.plusone_Name}</li>
-            <li>Dietary: {guestInfo.dietary}</li>
-            <li>RSVP: {guestInfo.rsvp}</li>
-            <li>Event Id: {guestInfo.event_id}</li>
-            <li>Group Number: {guestInfo.groupNumber}</li>
-          </ul>
-        </div>
-        {/* //send id with invite button */}
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Send Invite</button>
-        </form>
-        <button onClick={handleDelete}>Delete Guest</button>
-      </div>
+      <Center>
+        <Grid templateColumns="repeat(5, 1fr)" alignItems={'center'}>
+          <GridItem>
+            <Box
+              bgColor="#FFD900"
+              borderWidth="1px"
+              borderRadius="lg"
+              overflow="hidden"
+              mt="30px"
+              ml="4"
+              py="4"
+              px="8"
+              width="500px"
+            >
+              <ul>
+                <Text fontSize="25pt" fontWeight="bold">
+                  Guest Name: {guestInfo.name}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Email: {guestInfo.email}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Plus One: {guestInfo.plusone}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Name of Plus One: {guestInfo.plusone_Name}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Dietary: {guestInfo.dietary}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  RSVP: {guestInfo.rsvp}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Event Id: {guestInfo.event_id}
+                </Text>
+                <Text fontSize="15pt" fontWeight="bold">
+                  Group Number: {guestInfo.groupNumber}
+                </Text>
+              </ul>
+            </Box>
+
+            {/* //send id with invite button */}
+            <form onSubmit={handleSubmit}>
+              <Button type="submit" colorScheme="messenger">
+                Send Invite
+              </Button>
+            </form>
+            <Button onClick={handleDelete} colorScheme="red">
+              Delete Guest
+            </Button>
+          </GridItem>
+        </Grid>
+      </Center>
+      <br></br>
     </>
   )
 }
