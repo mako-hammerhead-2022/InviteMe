@@ -42,6 +42,8 @@ export function addListGuest(guest) {
   }
 }
 
+//updateTableForGuest function here. similar to the addListGuest
+
 export function setGuest(guest) {
   return {
     type: SET_GUEST,
@@ -97,5 +99,14 @@ export const updateGuest = (updatedGuest) => {
     return updateRsvpGuest(updatedGuest.id, updatedGuest)
       .then(() => dispatch(fetchGuests()))
       .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+//updateGuestTable - similar to updateGuest above^
+export const updateTableGuest = (updateGuest) => {
+  return (dispatch) => {
+    return updateGuestTable(updateGuest.id, updateGuest)
+      .then(() => dispatch(fetchGuests()))
+      .cath((err) => dispatch(setError(err.message)))
   }
 }

@@ -2,6 +2,11 @@ const request = require('superagent')
 
 const guestlistUrl = '/api/v1/guests/'
 
+// update guest table functions
+export function updateGuestTable() {
+  return console.log('hello')
+}
+
 export function getAllGuests() {
   return request.get(guestlistUrl).then((res) => res.body)
 }

@@ -17,7 +17,7 @@ const guestsReducer = (state = initialState, action) => {
       return [...state, action.payload]
     case SET_GUEST:
       return action.payload
-
+    //make another case for updating a guest table number
     default:
       return state
   }

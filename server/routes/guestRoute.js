@@ -133,4 +133,6 @@ router.get('/by-email/:email', (req, res) => {
     })
 })
 
+//router.patch that will take in the updated guest info and speak to the database
+
 module.exports = router

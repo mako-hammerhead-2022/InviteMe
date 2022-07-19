@@ -5,18 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 // import { fetchGuests } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
-// const itemsFromBackend = [
-//   { id: uuidv4(), content: 'ayoung' },
-//   { id: uuidv4(), content: 'beyond' },
-//   { id: uuidv4(), content: 'ngairo' },
-//   { id: uuidv4(), content: 'angela' },
-//   { id: uuidv4(), content: 'dave' },
-// ]
-
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return
   const { source, destination } = result
-
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId]
     const destColumn = columns[destination.droppableId]
@@ -24,6 +15,10 @@ const onDragEnd = (result, columns, setColumns) => {
     const destItems = [...destColumn.items]
     const [removed] = sourceItems.splice(source.index, 1)
     destItems.splice(destination.index, 0, removed)
+    console.log(removed)
+    console.log(destColumn)
+    const table = destColumn.name.replace(/^\D+/g, '')
+    console.log(typeof table)
     setColumns({
       ...columns,
       [source.droppableId]: {
@@ -35,6 +30,9 @@ const onDragEnd = (result, columns, setColumns) => {
         items: destItems,
       },
     })
+    const updatedGuestInfo = { ...removed, groupNumber: Number(table) }
+    console.log(updatedGuestInfo)
+    //call in your function from index.js in actions, pass in the object of the updated guest info
   } else {
     const column = columns[source.droppableId]
     const copiedItems = [...column.items]
@@ -47,29 +45,35 @@ const onDragEnd = (result, columns, setColumns) => {
         items: copiedItems,
       },
     })
+    //write code here
   }
 }
 
 function App() {
   const guests = useSelector((state) => state.guests)
-  // console.log(guests)
+
   const columnsFromBackend = {
     ['1']: {
       name: 'Guests',
-      items: guests,
+      items: [],
     },
     ['2']: {
       name: 'Table 1',
-      items: [],
+      items: guests.filter((guest) => guest.groupNumber === 1),
     },
     ['3']: {
       name: 'Table 2',
-      items: [],
+      items: guests.filter((guest) => guest.groupNumber === 2),
     },
     ['4']: {
       name: 'Table 3',
-      items: [],
+      items: guests.filter((guest) => guest.groupNumber === 3),
     },
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    console.log('Reset btn clicked!')
   }
 
   const [columns, setColumns] = useState(columnsFromBackend)
@@ -147,65 +151,9 @@ function App() {
           )
         })}
       </DragDropContext>
+      <button onClick={handleClick}>Reset</button>
     </div>
   )
 }
 
 export default App
-
-// export default function SeatingPlan() {
-//   const dispatch = useDispatch('')
-//   useEffect(() => {
-//     dispatch(fetchGuests())
-//   }, [])
-
-//   const [names, setNames] = useState(fakeData)
-
-//   function handleOnDragEnd(result) {
-//     if (!result.destination) return
-//     const items = Array.from(names)
-//     const [reorderedItem] = items.splice(result.source.index, 1)
-//     items.splice(result.destination.index, 0, reorderedItem)
-
-//     setNames(items)
-//   }
-
-//   return (
-//     <>
-//       <h1>Guests Names</h1>
-//       <DragDropContext onDragEnd={handleOnDragEnd}>
-//         <Droppable droppableId="fakeData">
-//           {(provided) => (
-//             <ul
-//               className="names"
-//               {...provided.droppableProps}
-//               ref={provided.innerRef}
-//             >
-//               {names.map(({ id, name }, index) => {
-//                 return (
-//                   <Draggable key={id} draggableId={id} index={index}>
-//                     {(provided) => (
-//                       <li
-//                         {...provided.draggableProps}
-//                         {...provided.dragHandleProps}
-//                         ref={provided.innerRef}
-//                       >
-//                         <p>{name}</p>
-//                       </li>
-//                     )}
-//                   </Draggable>
-//                 )
-//               })}
-//               {provided.placeholder}
-//             </ul>
-//           )}
-//         </Droppable>
-//       </DragDropContext>
-//     </>
-//   )
-// }
-
-// Imported actions from actions
-// Debug reducer
-// Link up with the backend Data
-// -- Need to import <Guest /> in and map through each guest name to display rather than displaying the fake data
