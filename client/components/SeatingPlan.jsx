@@ -5,6 +5,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTableGuest } from '../actions'
 
+import { Text, Box } from '@chakra-ui/react'
+
 function App() {
   const dispatch = useDispatch()
 
@@ -58,20 +60,20 @@ function App() {
 
   const columnsFromBackend = {
     ['1']: {
-      name: 'Guests',
-      items: [],
-    },
-    ['2']: {
       name: 'Table 1',
       items: guests.filter((guest) => guest.groupNumber === 1),
     },
-    ['3']: {
+    ['2']: {
       name: 'Table 2',
       items: guests.filter((guest) => guest.groupNumber === 2),
     },
-    ['4']: {
+    ['3']: {
       name: 'Table 3',
       items: guests.filter((guest) => guest.groupNumber === 3),
+    },
+    ['4']: {
+      name: 'Table 4',
+      items: guests.filter((guest) => guest.groupNumber === 4),
     },
   }
 
@@ -91,7 +93,14 @@ function App() {
               // }}
               key={columnId}
             >
-              <h2>{column.name}</h2>
+              <Text
+                fontSize="2xl"
+                fontWeight="bold"
+                color="#403F47"
+                marginLeft={'1%'}
+              >
+                {column.name}
+              </Text>
               <div style={{ margin: 8 }}>
                 <Droppable droppableId={columnId} key={columnId}>
                   {(provided, snapshot) => {
@@ -108,38 +117,61 @@ function App() {
                         //   minHeight: 500,
                         // }}
                       >
-                        {column.items.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item.id}
-                              draggableId={item.id.toString()}
-                              index={index}
-                            >
-                              {(provided, snapshot) => {
-                                return (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    // style={{
-                                    //   userSelect: 'none',
-                                    //   padding: 16,
-                                    //   margin: '0 0 8px 0',
-                                    //   minHeight: '50px',
-                                    //   backgroundColor: snapshot.isDragging
-                                    //     ? '#263B4A'
-                                    //     : '#456C86',
-                                    //   color: 'white',
-                                    //   ...provided.draggableProps.style,
-                                    // }}
-                                  >
-                                    {item.name}
-                                  </div>
-                                )
-                              }}
-                            </Draggable>
-                          )
-                        })}
+                        <Box
+                          bgColor="#FDFDFD "
+                          borderRadius="20pt"
+                          boxShadow="xl"
+                          height="125px"
+                        >
+                          {column.items.map((item, index) => {
+                            return (
+                              <Draggable
+                                key={item.id}
+                                draggableId={item.id.toString()}
+                                index={index}
+                              >
+                                {(provided, snapshot) => {
+                                  return (
+                                    <div
+                                      ref={provided.innerRef}
+                                      {...provided.draggableProps}
+                                      {...provided.dragHandleProps}
+                                      // style={{
+                                      //   userSelect: 'none',
+                                      //   padding: 16,
+                                      //   margin: '0 0 8px 0',
+                                      //   minHeight: '50px',
+                                      //   backgroundColor: snapshot.isDragging
+                                      //     ? '#263B4A'
+                                      //     : '#456C86',
+                                      //   color: 'white',
+                                      //   ...provided.draggableProps.style,
+                                      // }}
+                                    >
+                                      <Box
+                                        borderWidth="3px"
+                                        mt="15px"
+                                        ml="4"
+                                        py="4"
+                                        px="8"
+                                        width="50%"
+                                        heigh="20%"
+                                        display={'grid'}
+                                        bgGradient="linear(to-l, #EB3349,#F45C43)"
+                                        borderRadius="20pt"
+                                        boxShadow="xl"
+                                      >
+                                        <Text fontWeight="bold" color={'white'}>
+                                          {item.name}
+                                        </Text>
+                                      </Box>
+                                    </div>
+                                  )
+                                }}
+                              </Draggable>
+                            )
+                          })}
+                        </Box>
                         {provided.placeholder}
                       </div>
                     )
