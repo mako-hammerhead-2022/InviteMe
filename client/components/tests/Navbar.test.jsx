@@ -21,5 +21,5 @@ it('renders 5 list items', () => {
     </Router>
   )
   const listItems = screen.getAllByRole('listitem')
-  expect(listItems).toHaveLength(4)
+  expect(listItems).toHaveLength(5)
 })
