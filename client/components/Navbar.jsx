@@ -19,7 +19,7 @@ export default function rsvp() {
   return (
     <div className="top">
       <Text fontSize={50} fontWeight="bold" marginLeft={'1%'}>
-        InviteMe ❤️💑🏻❤️
+        InviteMe ❤️💍❤️
       </Text>
       <div className="topRight">
         <ul className="topList">
