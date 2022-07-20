@@ -28,8 +28,8 @@ function sendEmail(recipient) {
   const options = {
     from: 'invitemetesting@outlook.com',
     to: recipient.email,
-    subject: 'another test email',
-    text: `this is a dev test email http://localhost:3000/rsvp/${recipient.id}`,
+    subject: 'You are invited to our wedding!',
+    text: `Please RSVP by signing in with this email address http://localhost:3000/rsvp/${recipient.id}`,
   }
   return new Promise((resolve, reject) => {
     transporter.sendMail(options, function (err, info) {
