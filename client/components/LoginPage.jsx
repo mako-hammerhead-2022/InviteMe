@@ -39,7 +39,7 @@ const LoginPage = () => {
         >
           <Center marginBottom={'5%'}>
             <Text
-              bgColor={'white'}
+              bgColor={'black'}
               bgClip="text"
               fontSize="4xl"
               fontWeight="extrabold"
