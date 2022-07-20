@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchGuests, addGuest } from '../actions'
 import { Input, Select, Button, Text, Box, Center } from '@chakra-ui/react'
-// ;<link
-//   href="https://fonts.googleapis.com/css?family=Montserrat:300,700|Playfair+Display:400i"
-//   rel="stylesheet"
-// ></link>
 
 export default function AddGuests() {
   const initialState = {
