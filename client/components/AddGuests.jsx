@@ -56,18 +56,17 @@ export default function AddGuests() {
       </Center>
       <br></br>
       <Center>
-        <Box
-          ml={2}
-          bgColor="#FDFDFD "
-          width="40%"
-          borderRadius="20pt"
-          boxShadow="xl"
-        >
+        <Box ml={2} bgColor="#FDFDFD " borderRadius="20pt" boxShadow="xl">
           <br></br>
           <Center>
             <form onSubmit={handleSubmit}>
               <label htmlFor="name">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Guest Name: 🧑
                 </Text>
               </label>
@@ -83,13 +82,19 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>
               <label htmlFor="email">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Email: 📧
                 </Text>
               </label>
@@ -105,14 +110,20 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>
               <p>
                 <label htmlFor="rsvp">
-                  <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                  <Text
+                    fontSize="2xl"
+                    fontWeight="bold"
+                    color="#403F47"
+                    marginLeft={'5%'}
+                  >
                     Are you coming? ❔
                   </Text>
                 </label>
@@ -127,6 +138,7 @@ export default function AddGuests() {
                 borderColor="#ccc"
                 width="25%"
                 size="lg"
+                marginLeft={'5%'}
               >
                 <option name="rsvp" value="1">
                   Yeeea!
@@ -138,7 +150,12 @@ export default function AddGuests() {
               <br></br>
               <p>
                 <label htmlFor="plusone">
-                  <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                  <Text
+                    fontSize="2xl"
+                    fontWeight="bold"
+                    color="#403F47"
+                    marginLeft={'5%'}
+                  >
                     Would you like to bring a plus one? 🎎
                   </Text>
                 </label>
@@ -153,6 +170,7 @@ export default function AddGuests() {
                 borderColor="#ccc"
                 width="25%"
                 size="lg"
+                marginLeft={'5%'}
               >
                 <option name="plusone" value="0">
                   No, I fly solo.
@@ -163,7 +181,12 @@ export default function AddGuests() {
               </Select>
               <br></br>
               <label htmlFor="plusone_Name">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Name of Plus One: 📛
                 </Text>
               </label>
@@ -179,13 +202,19 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>
               <label htmlFor="dietary">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Dietary: 🥦
                 </Text>
               </label>
@@ -201,13 +230,19 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>
               <label htmlFor="event_id">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Event ID: 🆔
                 </Text>
               </label>
@@ -223,13 +258,19 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>
               <label htmlFor="groupNumber">
-                <Text fontSize="2xl" fontWeight="bold" color="#403F47">
+                <Text
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="#403F47"
+                  marginLeft={'5%'}
+                >
                   Group Number: 🔢
                 </Text>
               </label>
@@ -245,8 +286,9 @@ export default function AddGuests() {
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
                 htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
               <br></br>
               <br></br>

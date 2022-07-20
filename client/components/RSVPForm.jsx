@@ -94,9 +94,9 @@ export default function RSVPForm() {
         <Box
           margin="50px"
           bgColor="#FDFDFD "
-          width="40%"
           borderRadius="20pt"
           boxShadow="xl"
+          padding={'1%'}
         >
           <Center>
             <form onSubmit={handleSubmit}>
@@ -106,6 +106,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'20px'}
+                  marginLeft={'5%'}
                 >
                   Your Full Name: 🧑
                 </Text>
@@ -122,9 +123,9 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
 
               <label htmlFor="guestEmail">
@@ -133,6 +134,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'10px'}
+                  marginLeft={'5%'}
                 >
                   Your Email Address: 📧
                 </Text>
@@ -149,9 +151,9 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
 
               <label htmlFor="rsvp">
@@ -160,6 +162,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'10px'}
+                  marginLeft={'5%'}
                 >
                   Are you coming: ❔
                 </Text>
@@ -173,9 +176,9 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="35%"
                 size="lg"
+                marginLeft={'5%'}
               >
                 <option name="rsvp" value="1">
                   Yeeea!
@@ -191,6 +194,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'10px'}
+                  marginLeft={'5%'}
                 >
                   Would you like to bring a plus one? 🎎
                 </Text>
@@ -204,9 +208,9 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="35%"
                 size="lg"
+                marginLeft={'5%'}
               >
                 <option name="plusone" value="0">
                   No, I fly solo.
@@ -222,6 +226,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'10px'}
+                  marginLeft={'5%'}
                 >
                   Full Name of Your Plus One: 📛
                 </Text>
@@ -238,9 +243,9 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
               />
 
               <label htmlFor="dietary">
@@ -249,6 +254,7 @@ export default function RSVPForm() {
                   fontWeight="bold"
                   color="#403F47"
                   marginTop={'10px'}
+                  marginLeft={'5%'}
                 >
                   Dietary Restrictions: 🥦
                 </Text>
@@ -265,23 +271,26 @@ export default function RSVPForm() {
                 _placeholder={{ color: 'inherit' }}
                 bgColor="#f8f8f8"
                 borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
+                width="75%"
                 size="lg"
+                marginLeft={'5%'}
+                marginBottom="5%"
               />
-              <Input
-                type="submit"
-                value="Submit"
-                color="white"
-                _placeholder={{ color: 'inherit' }}
-                bgGradient="linear(to-r, red.400,pink.400)"
-                borderColor="#ccc"
-                htmlSize={75}
-                width="auto"
-                size="lg"
-                marginBottom={'20px'}
-                marginLeft="10px"
-              />
+              <Center>
+                <Input
+                  type="submit"
+                  value="Submit"
+                  color="white"
+                  _placeholder={{ color: 'inherit' }}
+                  bgGradient="linear(to-r, red.400,pink.400)"
+                  borderColor="#ccc"
+                  htmlSize={75}
+                  width="auto"
+                  size="lg"
+                  marginBottom={'20px'}
+                  marginLeft="10px"
+                />
+              </Center>
             </form>
           </Center>
         </Box>
