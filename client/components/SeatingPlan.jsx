@@ -60,18 +60,22 @@ function App() {
 
   const columnsFromBackend = {
     ['1']: {
+      name: 'Guest',
+      items: [],
+    },
+    ['2']: {
       name: 'Table 1',
       items: guests.filter((guest) => guest.groupNumber === 1),
     },
-    ['2']: {
+    ['3']: {
       name: 'Table 2',
       items: guests.filter((guest) => guest.groupNumber === 2),
     },
-    ['3']: {
+    ['4']: {
       name: 'Table 3',
       items: guests.filter((guest) => guest.groupNumber === 3),
     },
-    ['4']: {
+    ['5']: {
       name: 'Table 4',
       items: guests.filter((guest) => guest.groupNumber === 4),
     },
