@@ -55,6 +55,12 @@ function findGuestByEmail(email, db = connection) {
   return db('guest').select('*').where('email', email).first()
 }
 
+//function updateGuestTable
+function updateGuestTable(id, groupNumber, db = connection) {
+  console.log('grp number', groupNumber)
+  return db('guest').update('groupNumber', groupNumber).where({ id })
+}
+
 module.exports = {
   addGuest,
   getGuests,
@@ -62,4 +68,5 @@ module.exports = {
   updateGuest,
   findGuestById,
   findGuestByEmail,
+  updateGuestTable,
 }

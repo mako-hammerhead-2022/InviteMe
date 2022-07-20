@@ -5,6 +5,8 @@ import { fetchGuests } from '../actions'
 
 import AddGuests from './AddGuests'
 
+import { Grid } from '@chakra-ui/react'
+
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)
 
@@ -15,13 +17,15 @@ export default function GuestList() {
   }, [])
 
   return (
-    <div>
+    <>
       <AddGuests />
-      {guests
-        // .sort((a, b) => a.name.localeCompare(b.name))
-        .map((guest) => {
-          return <Guest key={guest.id} guestInfo={guest} />
-        })}
-    </div>
+      <Grid templateColumns="repeat(4, 1fr)" gap={50}>
+        {guests
+          // .sort((a, b) => a.name.localeCompare(b.name))
+          .map((guest) => {
+            return <Guest key={guest.id} guestInfo={guest} />
+          })}
+      </Grid>
+    </>
   )
 }

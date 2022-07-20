@@ -2,6 +2,19 @@ const request = require('superagent')
 
 const guestlistUrl = '/api/v1/guests/'
 
+// update guest table functions
+export function updateGuestTable(id, groupNumber) {
+  console.log('returning from api')
+  return request
+    .patch(guestlistUrl + 'seatingplan')
+    .send({ id, groupNumber })
+    .set('Accept', 'application/json')
+    .then((res) => res.body.groupNumber)
+    .catch((err) => {
+      console.err(err.message)
+    })
+}
+
 export function getAllGuests() {
   return request.get(guestlistUrl).then((res) => res.body)
 }
@@ -15,10 +28,10 @@ export function sendEmail(recipient) {
 
 export function deleteGuestApi(id) {
   return request
-    .delete(guestlistUrl)
+    .del(guestlistUrl)
     .send({ id })
     .set('Accept', 'application/json')
-    .then((res) => res)
+    .then((res) => res.body)
     .catch((err) => {
       console.err(err.message)
     })
