@@ -4,6 +4,7 @@ export const SET_LOADING = 'SET_LOADING'
 export const ADD_GUESTS_SUCCESS = 'ADD_GUESTS_SUCCESS'
 export const ADD_GUEST = 'ADD_GUEST'
 export const SET_GUEST = 'SET_GUEST'
+export const UPDATE_GROUPNUMBER = 'UPDATE_GROUPNUMBER'
 
 import {
   getAllGuests,
@@ -11,6 +12,7 @@ import {
   addNewGuest,
   updateRsvpGuest,
   getSingleGuest,
+  updateGuestTable,
 } from '../apis'
 
 export const fetchGuests = () => {
@@ -41,6 +43,14 @@ export function addListGuest(guest) {
   return {
     type: ADD_GUEST,
     payload: guest,
+  }
+}
+
+//updateTableForGuest function here. similar to the addListGuest
+export function updateTableforGuest(oldNumber, newNumber) {
+  return {
+    type: UPDATE_GROUPNUMBER,
+    payload: { oldNumber, newNumber },
   }
 }
 
@@ -97,6 +107,16 @@ export const addGuest = (newGuest) => {
 export const updateGuest = (updatedGuest) => {
   return (dispatch) => {
     return updateRsvpGuest(updatedGuest.id, updatedGuest)
+      .then(() => dispatch(fetchGuests()))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+}
+
+//updateGuestTable - similar to updateGuest above^
+export const updateTableGuest = (id, groupNumber) => {
+  console.log('returning from actions', { id, groupNumber })
+  return (dispatch) => {
+    return updateGuestTable(id, groupNumber)
       .then(() => dispatch(fetchGuests()))
       .catch((err) => dispatch(setError(err.message)))
   }
