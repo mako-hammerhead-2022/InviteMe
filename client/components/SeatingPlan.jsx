@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // import { fetchGuests } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTableGuest } from '../actions'
+import { Text } from '@chakra-ui/react'
 
 function App() {
   const dispatch = useDispatch()
@@ -141,7 +142,7 @@ function App() {
                                     //   ...provided.draggableProps.style,
                                     // }}
                                   >
-                                    {item.name}
+                                    <Text fontSize={'20pt'}>{item.name}</Text>
                                   </div>
                                 )
                               }}
