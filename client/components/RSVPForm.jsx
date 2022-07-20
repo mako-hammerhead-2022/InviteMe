@@ -70,13 +70,8 @@ export default function RSVPForm() {
     <>
       <Box width="100%" bgColor={'white'} marginBottom="3%">
         <Center>
-          <Text
-            color="#403F47"
-            fontSize="6xl"
-            fontWeight="extrabold"
-            fontFamily={'m'}
-          >
-            We are pleased to invite you to our wedding!
+          <Text color="#403F47" fontSize="5xl" fontWeight="extrabold">
+            ⚭ We Are Pleased to Invite You to Our Wedding! ⚭
           </Text>
         </Center>
       </Box>
