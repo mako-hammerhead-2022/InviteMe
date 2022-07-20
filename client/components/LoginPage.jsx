@@ -39,7 +39,7 @@ const LoginPage = () => {
         >
           <Center marginBottom={'5%'}>
             <Text
-              bgGradient="linear(to-r, red.400,pink.400)"
+              bgColor={'white'}
               bgClip="text"
               fontSize="4xl"
               fontWeight="extrabold"
