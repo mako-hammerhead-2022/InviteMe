@@ -11,14 +11,9 @@ const Profile = () => {
         {/* {JSON.stringify(user)} */}
         {/* {user?.picture && <img src={user.picture} alt={user?.name} />} */}
         <Center>
-          <Text
-            bgGradient="linear(to-r, red.400,pink.400)"
-            bgClip="text"
-            fontSize="2xl"
-            fontWeight="extrabold"
-          >
-            Thank you, {user?.name}
-          </Text>
+          <h2 aria-label="login message" className="login-welcome">
+            {`Thank you, ${user?.name}`}
+          </h2>
         </Center>
 
         {/* <ul>
@@ -28,6 +23,7 @@ const Profile = () => {
             </li>
           ))}
         </ul> */}
+
       </article>
     )
   )

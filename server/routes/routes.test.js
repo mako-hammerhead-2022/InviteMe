@@ -30,7 +30,7 @@ const guestMock = [
 ]
 // using mock to test so we don't need to update tests everytime db changes.
 describe('mock route data', () => {
-  test('GET /api/v1/guests', () => {
+  test('GET all guests /api/v1/guests', () => {
     expect.assertions(2)
     db.getGuests.mockImplementation(() => Promise.resolve(guestMock))
     return request(server)
@@ -41,6 +41,30 @@ describe('mock route data', () => {
         expect(res.body).toHaveLength(2)
       })
   })
+  test('GET single guest /api/v1/guests/ id:', () => {
+    expect.assertions(2)
+    db.getGuests.mockImplementation(() => Promise.resolve(guestMock))
+    return request(server)
+      .get('/api/v1/guests')
+      .expect(200)
+      .then((res) => {
+      expect(res.body['Ben']).toStrictEqual(guestMock[10]) // wanting to return my fake data here.. toBeStrickEqual, wants it to be the identicale
+      expect(res.body).toHaveLength(2)
+      })
+  })
+   test('GET /by-email/:email', () => {
+    expect.assertions(2)
+    db.getGuests.mockImplementation(() => Promise.resolve(guestMock))
+    return request(server)
+      .get('/api/v1/guests')
+      .expect(200)
+      .then((res) => {
+        expect(res.body[9]).toBe(guestMock['bobbie@hotmail.com']) // wanting to return my fake data here.. toBeStrickEqual, wants it to be the identicale
+        expect(res.body).toHaveLength(2)
+      })
+   })
+
+
   // test('POST route test', () => {
   //   const addGuest = {
   //     name: 'Benjamin',
@@ -54,16 +78,13 @@ describe('mock route data', () => {
   //   }
   //   expect.assertions(2)
   //   return db
-  //   .addGuest
-  //   .getGuests.mockImplementation(() => Promise.resolve(addGuest))
-  //   .request(server)
+  //   .getGuests.mockImplementation(() => Promise.resolve(guestMock))
+  //   .request(server, addGuest)
   //     .get('/api/v1/guests')
   //     .expect(200)
-  //     .then((result) => {
-  //       expect(result[3].name).toBe('Benjamin')
-  //       expect(result).toHaveLength(3)
+  //     .then((res) => {
+  //       expect(res.body[3].name).toBe('Benjamin')
+  //       expect(res.body).toHaveLength(3)
   //     })
   // })
-
-
 })

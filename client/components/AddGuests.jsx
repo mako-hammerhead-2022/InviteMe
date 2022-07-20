@@ -32,7 +32,6 @@ export default function AddGuests() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // console.log('Submit btn was clicked!!')
     dispatch(addGuest(guest))
     setGuest(initialState)
     dispatch(fetchGuests())
@@ -56,7 +55,18 @@ export default function AddGuests() {
       </Center>
       <br></br>
       <Center>
+<<<<<<< HEAD
         <Box ml={2} bgColor="#FDFDFD " borderRadius="20pt" boxShadow="xl">
+=======
+        <Box
+          ml={2}
+          bgColor="#FDFDFD "
+          width="40%"
+          borderRadius="20pt"
+          boxShadow="xl"
+        >
+
+>>>>>>> 5ad453c1318a47b2bcdcd6c9825dbb89619466b0
           <br></br>
           <Center>
             <form onSubmit={handleSubmit}>
@@ -302,7 +312,6 @@ export default function AddGuests() {
                   Submit
                 </Button>
               </Center>
-
               <br></br>
               <br></br>
             </form>
