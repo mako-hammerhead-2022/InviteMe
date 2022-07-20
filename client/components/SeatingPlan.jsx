@@ -121,7 +121,7 @@ function App() {
                           bgColor="#FDFDFD "
                           borderRadius="20pt"
                           boxShadow="xl"
-                          height="125px"
+                          height="200px"
                         >
                           {column.items.map((item, index) => {
                             return (
@@ -150,7 +150,7 @@ function App() {
                                     >
                                       <Box
                                         borderWidth="3px"
-                                        mt="15px"
+                                        mt="30px"
                                         ml="4"
                                         py="4"
                                         px="8"
