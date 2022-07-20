@@ -23,63 +23,60 @@ export default function Guest({ guestInfo }) {
 
   return (
     <>
-
       <Center>
-        <Grid templateColumns="repeat(5, 1fr)" alignItems={'center'}>
-          <GridItem>
-            <Box
-              bgColor="#FFD900"
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              mt="30px"
-              ml="4"
-              py="4"
-              px="8"
-              width="500px"
-            >
-              <ul>
-                <Text fontSize="25pt" fontWeight="bold">
-                  Guest Name: {guestInfo.name}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Email: {guestInfo.email}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Plus One: {guestInfo.plusone}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Name of Plus One: {guestInfo.plusone_Name}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Dietary: {guestInfo.dietary}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  RSVP: {guestInfo.rsvp}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Event Id: {guestInfo.event_id}
-                </Text>
-                <Text fontSize="15pt" fontWeight="bold">
-                  Group Number: {guestInfo.groupNumber}
-                </Text>
-              </ul>
-            </Box>
+        <Box
+          borderWidth="3px"
+          mt="30px"
+          ml="4"
+          py="4"
+          px="8"
+          display={'grid'}
+          bgGradient="linear(to-l, #EB3349,#F45C43)"
+          borderRadius="20pt"
+          boxShadow="xl"
+        >
+          <Text fontSize="25pt" fontWeight="bold" color={'white'}>
+            Guest Name: {guestInfo.name}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Email: {guestInfo.email}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Plus One: {guestInfo.plusone}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Name of Plus One: {guestInfo.plusone_Name}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Dietary: {guestInfo.dietary}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            RSVP: {guestInfo.rsvp}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Event Id: {guestInfo.event_id}
+          </Text>
+          <Text fontSize="15pt" fontWeight="bold" color={'white'}>
+            Group Number: {guestInfo.groupNumber}
+          </Text>
+        </Box>
 
-            {/* //send id with invite button */}
-            <form onSubmit={handleSubmit}>
-              <Button type="submit" colorScheme="messenger">
-                Send Invite
-              </Button>
-            </form>
-            <Button onClick={handleDelete} colorScheme="red">
-              Delete Guest
-            </Button>
-          </GridItem>
-        </Grid>
+        {/* //send id with invite button */}
+        <form onSubmit={handleSubmit}>
+          <Button
+            type="submit"
+            colorScheme="messenger"
+            margin={'10px'}
+            size="lg"
+          >
+            Send Invite
+          </Button>
+        </form>
+        <Button onClick={handleDelete} colorScheme="red" size="lg">
+          Delete Guest
+        </Button>
       </Center>
       <br></br>
-
     </>
   )
 }
