@@ -56,9 +56,6 @@ function App() {
   }
   const guests = useSelector((state) => state.guests)
 
-  // Reset names into original table number
-  const [names, setNames] = useState('')
-
   const columnsFromBackend = {
     ['1']: {
       name: 'Guests',
@@ -76,11 +73,6 @@ function App() {
       name: 'Table 3',
       items: guests.filter((guest) => guest.groupNumber === 3),
     },
-  }
-
-  const handleClick = (e) => {
-    e.preventDefault()
-    console.log('Reset btn clicked!')
   }
 
   const [columns, setColumns] = useState(columnsFromBackend)
@@ -158,7 +150,6 @@ function App() {
           )
         })}
       </DragDropContext>
-      <button onClick={handleClick}>Reset</button>
     </div>
   )
 }
