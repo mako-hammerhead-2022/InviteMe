@@ -5,7 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTableGuest } from '../actions'
 
-import { Text, Box } from '@chakra-ui/react'
+import { Text, Box, Button } from '@chakra-ui/react'
 
 function App() {
   const dispatch = useDispatch()
@@ -94,7 +94,7 @@ function App() {
               key={columnId}
             >
               <Text
-                fontSize="2xl"
+                fontSize="3xl"
                 fontWeight="bold"
                 color="#403F47"
                 marginLeft={'1%'}
@@ -121,7 +121,9 @@ function App() {
                           bgColor="#FDFDFD "
                           borderRadius="20pt"
                           boxShadow="xl"
-                          height="200px"
+                          height="100%"
+                          width="80%"
+                          padding={'20px'}
                         >
                           {column.items.map((item, index) => {
                             return (
@@ -150,18 +152,22 @@ function App() {
                                     >
                                       <Box
                                         borderWidth="3px"
-                                        mt="30px"
+                                        mt="10px"
                                         ml="4"
                                         py="4"
                                         px="8"
                                         width="50%"
-                                        heigh="20%"
+                                        height="50%"
                                         display={'grid'}
                                         bgGradient="linear(to-l, #EB3349,#F45C43)"
                                         borderRadius="20pt"
                                         boxShadow="xl"
                                       >
-                                        <Text fontWeight="bold" color={'white'}>
+                                        <Text
+                                          fontWeight="bold"
+                                          color={'white'}
+                                          fontSize="15pt"
+                                        >
                                           {item.name}
                                         </Text>
                                       </Box>
@@ -182,6 +188,10 @@ function App() {
           )
         })}
       </DragDropContext>
+      <Box marginBottom={'100%'}></Box>
+      <Button opacity={'100%'} marginBottom={'100%'}>
+        Easter Egg 🥚
+      </Button>
     </div>
   )
 }
