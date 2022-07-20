@@ -17,17 +17,6 @@ exports.seed = function (knex) {
           groupNumber: 1,
         },
         {
-          id: 2,
-          name: 'Beyond',
-          email: 'allstar_beyond@hotmail.com',
-          plusone: 1,
-          plusone_Name: 'Christina',
-          dietary: 'fish',
-          rsvp: 1,
-          event_id: 1,
-          groupNumber: 1,
-        },
-        {
           id: 3,
           name: 'Angela',
           email: 'nzangela78@gmail.com',
@@ -50,7 +39,7 @@ exports.seed = function (knex) {
           groupNumber: 3,
         },
         {
-          id: 5,
+          id: 2,
           name: 'Ngairo',
           email: 'ngairotap@gmail.com',
           plusone: 0,
