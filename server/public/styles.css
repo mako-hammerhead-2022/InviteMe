@@ -44,4 +44,5 @@
 
 .spline {
   height: 100vh;
+  cursor: pointer;
 }

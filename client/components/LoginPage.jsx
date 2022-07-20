@@ -44,7 +44,7 @@ const LoginPage = () => {
               fontSize="4xl"
               fontWeight="extrabold"
             >
-              Please Sign In to Respond to Your Invite
+              Please Sign In to RSVP
             </Text>
           </Center>
 

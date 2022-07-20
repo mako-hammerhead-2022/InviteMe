@@ -27,7 +27,7 @@ const LogoutPage = () => {
             <Text
               bgGradient="linear(to-r, red.400,pink.400)"
               bgClip="text"
-              fontSize="4xl"
+              fontSize="3xl"
               fontWeight="extrabold"
             >
               All done! RSVP form has been successfully submitted.
