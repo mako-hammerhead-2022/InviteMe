@@ -57,6 +57,7 @@ function findGuestByEmail(email, db = connection) {
 
 //function updateGuestTable
 function updateGuestTable(id, groupNumber, db = connection) {
+  console.log('grp number', groupNumber)
   return db('guest').update('groupNumber', groupNumber).where({ id })
 }
 

@@ -3,11 +3,11 @@ const request = require('superagent')
 const guestlistUrl = '/api/v1/guests/'
 
 // update guest table functions
-export function updateGuestTable(id, updateGuest) {
+export function updateGuestTable(id, groupNumber) {
   console.log('returning from api')
   return request
     .patch(guestlistUrl + 'seatingplan')
-    .send({ id, updateGuest })
+    .send({ id, groupNumber })
     .set('Accept', 'application/json')
     .then((res) => res.body.groupNumber)
     .catch((err) => {

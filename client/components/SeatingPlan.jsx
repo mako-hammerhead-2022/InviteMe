@@ -5,52 +5,55 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTableGuest } from '../actions'
 
-const onDragEnd = (result, columns, setColumns) => {
-  if (!result.destination) return
-  const { source, destination } = result
-  if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.droppableId]
-    const destColumn = columns[destination.droppableId]
-    const sourceItems = [...sourceColumn.items]
-    const destItems = [...destColumn.items]
-    const [removed] = sourceItems.splice(source.index, 1)
-    destItems.splice(destination.index, 0, removed)
-    console.log(removed)
-    console.log(destColumn)
-    const table = destColumn.name.replace(/^\D+/g, '')
-    console.log('this is table', table)
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems,
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems,
-      },
-    })
-    const updatedGuestInfo = { ...removed, groupNumber: Number(table) }
-    console.log('update guest info', updatedGuestInfo)
-    //call in your function from index.js in actions, pass in the object of the updated guest info
-    updateTableGuest(updatedGuestInfo)
-  } else {
-    const column = columns[source.droppableId]
-    const copiedItems = [...column.items]
-    const [removed] = copiedItems.splice(source.index, 1)
-    copiedItems.splice(destination.index, 0, removed)
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems,
-      },
-    })
-    //write code here
-  }
-}
-
 function App() {
+  const dispatch = useDispatch()
+
+  const onDragEnd = (result, columns, setColumns) => {
+    if (!result.destination) return
+    const { source, destination } = result
+    if (source.droppableId !== destination.droppableId) {
+      const sourceColumn = columns[source.droppableId]
+      const destColumn = columns[destination.droppableId]
+      const sourceItems = [...sourceColumn.items]
+      const destItems = [...destColumn.items]
+      const [removed] = sourceItems.splice(source.index, 1)
+      destItems.splice(destination.index, 0, removed)
+      console.log(removed)
+      console.log(destColumn)
+      const table = destColumn.name.replace(/^\D+/g, '')
+      console.log('this is table', table)
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems,
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems,
+        },
+      })
+      const updatedGuestInfo = { ...removed, groupNumber: Number(table) }
+      console.log('update guest info', updatedGuestInfo)
+      //call in your function from index.js in actions, pass in the object of the updated guest info
+      dispatch(
+        updateTableGuest(updatedGuestInfo.id, updatedGuestInfo.groupNumber)
+      )
+    } else {
+      const column = columns[source.droppableId]
+      const copiedItems = [...column.items]
+      const [removed] = copiedItems.splice(source.index, 1)
+      copiedItems.splice(destination.index, 0, removed)
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...column,
+          items: copiedItems,
+        },
+      })
+      //write code here
+    }
+  }
   const guests = useSelector((state) => state.guests)
 
   // Reset names into original table number

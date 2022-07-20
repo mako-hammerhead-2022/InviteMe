@@ -75,22 +75,6 @@ router.post('/', (req, res) => {
     })
 })
 
-// PATCH guest api/v1/guests
-router.patch('/:id', (req, res) => {
-  const id = req.params.id
-  const guest = req.body
-
-  db.updateGuest(id, guest)
-    .then((guest) => {
-      guest.id = id
-      res.json(guest)
-    })
-    .catch((err) => {
-      console.error(err.message)
-      res.status(500).send('Something went wrong!')
-    })
-})
-
 //GET single guest /api/v1/guests/:id
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
@@ -106,6 +90,7 @@ router.get('/:id', (req, res) => {
 })
 
 //UPDATE single guest /api/v1/guests/:id
+// /seatingplan
 // router.patch('/:id', (req, res) => {
 //   const id = Number(req.body.params)
 //   const { name, email, plusone, plusoneName, dietary, rsvp } = req.body
@@ -133,10 +118,12 @@ router.get('/by-email/:email', (req, res) => {
     })
 })
 
-//router.patch that will take in the updated guest info and speak to the database
-router.patch('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const groupNumber = req.body
+// router.patch that will take in the updated guest info and speak to the database
+// localhost:3000/api/v1/guests/seatingplan
+// api route
+// a function that lives on a url
+router.patch('/seatingplan', (req, res) => {
+  const { id, groupNumber } = req.body
   db.updateGuestTable(id, groupNumber)
     .then((updateTable) => {
       res.json(updateTable)
@@ -147,5 +134,13 @@ router.patch('/:id', (req, res) => {
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
+// add something
+// router.post
+// get something
+// router.get
+// update something
+// router.patch or router.put
+// delete something
+// router.delete
 
 module.exports = router

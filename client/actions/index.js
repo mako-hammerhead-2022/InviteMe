@@ -111,11 +111,11 @@ export const updateGuest = (updatedGuest) => {
 }
 
 //updateGuestTable - similar to updateGuest above^
-export const updateTableGuest = (updateGuest) => {
-  console.log('returning from actions', updateGuest)
+export const updateTableGuest = (id, groupNumber) => {
+  console.log('returning from actions', { id, groupNumber })
   return (dispatch) => {
-    return updateGuestTable(updateGuest.id, updateGuest)
+    return updateGuestTable(id, groupNumber)
       .then(() => dispatch(fetchGuests()))
-      .cath((err) => dispatch(setError(err.message)))
+      .catch((err) => dispatch(setError(err.message)))
   }
 }
