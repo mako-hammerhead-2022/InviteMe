@@ -5,6 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTableGuest } from '../actions'
 
+
 import { Text, Box, Button } from '@chakra-ui/react'
 
 function App() {
@@ -60,8 +61,10 @@ function App() {
 
   const columnsFromBackend = {
     ['1']: {
+
       name: 'Guest',
       items: guests.filter((guest) => guest.groupNumber === ''),
+
     },
     ['2']: {
       name: 'Table 1',
@@ -74,10 +77,12 @@ function App() {
     ['4']: {
       name: 'Table 3',
       items: guests.filter((guest) => guest.groupNumber === 3),
+
     },
     ['5']: {
       name: 'Table 4',
       items: guests.filter((guest) => guest.groupNumber === 4),
+
     },
   }
 
