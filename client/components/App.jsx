@@ -6,6 +6,7 @@ import LoginPage from './LoginPage'
 import NoMatch from './NoMatch'
 import MainLayout from './MainLayout.jsx'
 import Callback from './Callback'
+import HomePage from './HomePage'
 
 import { Route, Routes } from 'react-router-dom'
 
@@ -15,12 +16,12 @@ function App() {
   return (
     <>
       <div className="app">
-        {/* <Navbar /> */}
         <Routes>
           <Route element={<MainLayout />}>
             <Route exact path="/" element={<GuestList />} />
             <Route exact path="/seatingplan" element={<SeatingPlan />} />
           </Route>
+          <Route path="/home" element={<HomePage />} />
           <Route exact path="/rsvp/:id" element={<RSVPForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/callback" element={<Callback />} />

@@ -5,6 +5,8 @@ import { fetchGuests } from '../actions'
 
 import AddGuests from './AddGuests'
 
+import { SimpleGrid } from '@chakra-ui/react'
+
 export default function GuestList() {
   const guests = useSelector((state) => state.guests)
 
@@ -15,13 +17,15 @@ export default function GuestList() {
   }, [])
 
   return (
-    <div>
+    <>
       <AddGuests />
-      {guests
-        // .sort((a, b) => a.name.localeCompare(b.name))
-        .map((guest) => {
-          return <Guest key={guest.id} guestInfo={guest} />
-        })}
-    </div>
+      <SimpleGrid autoColumns={'true'} autoRows="true" spacing="40px">
+        {guests
+          // .sort((a, b) => a.name.localeCompare(b.name))
+          .map((guest) => {
+            return <Guest key={guest.id} guestInfo={guest} />
+          })}
+      </SimpleGrid>
+    </>
   )
 }

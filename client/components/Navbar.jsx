@@ -18,9 +18,14 @@ export default function rsvp() {
 
   return (
     <div className="top">
-      <Text fontSize={50}>❤️💑🏻❤️</Text>
+      <Text fontSize={50} fontWeight="bold" marginLeft={'1%'}>
+        InviteMe ❤️💍❤️
+      </Text>
       <div className="topRight">
         <ul className="topList">
+          <Link to="/home">
+            <li className="topListItem">HOME</li>
+          </Link>
           <Link to="/">
             <li className="topListItem">GUEST LIST</li>
           </Link>
